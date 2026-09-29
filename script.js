@@ -1,4 +1,3 @@
-```javascript
 /* =========================================================
    FAMILY BAZAR
    STEP 3 — MAIN JAVASCRIPT
