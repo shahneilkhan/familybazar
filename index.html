@@ -1,1 +1,4021 @@
-#
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Family Bazar - Your trusted online family grocery marketplace."
+  >
+
+  <meta
+    name="theme-color"
+    content="#0b8f55"
+  >
+
+  <title>Family Bazar | Your Family's Online Bazar</title>
+
+  <style>
+    /* =========================================================
+       FAMILY BAZAR
+       STEP 1 — COMPLETE INDEX.HTML
+       ========================================================= */
+
+    :root {
+      --green: #0b8f55;
+      --green-dark: #067342;
+      --green-light: #e9f8f0;
+      --lime: #a7d94c;
+      --orange: #ff8a00;
+      --red: #ef4444;
+      --yellow: #ffc928;
+
+      --dark: #15231d;
+      --text: #25352d;
+      --muted: #718078;
+
+      --white: #ffffff;
+      --bg: #f7f9f7;
+      --card: #ffffff;
+      --border: #e7ece9;
+
+      --shadow-sm:
+        0 4px 16px rgba(18, 49, 35, 0.06);
+
+      --shadow:
+        0 12px 35px rgba(18, 49, 35, 0.09);
+
+      --radius-sm: 10px;
+      --radius: 16px;
+      --radius-lg: 24px;
+
+      --container: 1240px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(
+        calc(100% - 32px),
+        var(--container)
+      );
+
+      margin-inline: auto;
+    }
+
+    /* =========================================================
+       TOP OFFER BAR
+       ========================================================= */
+
+    .offer-bar {
+      min-height: 38px;
+      background: var(--green-dark);
+      color: #fff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      padding: 7px 15px;
+      text-align: center;
+    }
+
+    .offer-bar span {
+      color: #d9ff8b;
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+
+    .header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-main {
+      min-height: 78px;
+
+      display: grid;
+      grid-template-columns:
+        auto
+        minmax(300px, 1fr)
+        auto;
+
+      align-items: center;
+      gap: 28px;
+    }
+
+    /* LOGO */
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: max-content;
+    }
+
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          145deg,
+          var(--green),
+          #12ad69
+        );
+
+      color: white;
+
+      display: grid;
+      place-items: center;
+
+      font-size: 23px;
+      font-weight: 900;
+
+      box-shadow:
+        0 7px 18px
+        rgba(11, 143, 85, 0.22);
+    }
+
+    .logo-text strong {
+      display: block;
+      color: var(--green-dark);
+
+      font-size: 21px;
+      line-height: 1;
+
+      font-weight: 900;
+      letter-spacing: -0.6px;
+    }
+
+    .logo-text small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+      height: 48px;
+      border: 1px solid #dfe7e2;
+      border-radius: 14px;
+      background: #f8faf9;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      transition: 0.2s;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--green);
+      background: white;
+
+      box-shadow:
+        0 0 0 4px
+        rgba(11, 143, 85, 0.08);
+    }
+
+    .search-icon {
+      width: 48px;
+      text-align: center;
+      font-size: 19px;
+    }
+
+    .search-box input {
+      flex: 1;
+
+      border: 0;
+      outline: 0;
+      background: transparent;
+
+      height: 100%;
+
+      font-size: 14px;
+      color: var(--dark);
+    }
+
+    .search-box button {
+      height: 40px;
+      margin-right: 4px;
+
+      padding: 0 18px;
+
+      border: 0;
+      border-radius: 11px;
+
+      background: var(--green);
+      color: #fff;
+
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    /* HEADER ACTIONS */
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-action {
+      min-width: 42px;
+      height: 44px;
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      background: #fff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      color: var(--dark);
+      position: relative;
+
+      transition: 0.2s;
+    }
+
+    .header-action:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-1px);
+    }
+
+    .header-action .label {
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .cart-count {
+      position: absolute;
+
+      top: -6px;
+      right: -5px;
+
+      width: 19px;
+      height: 19px;
+
+      border-radius: 50%;
+
+      background: var(--orange);
+      color: #fff;
+
+      display: grid;
+      place-items: center;
+
+      font-size: 10px;
+      font-weight: 900;
+
+      border: 2px solid #fff;
+    }
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
+    .nav {
+      border-top: 1px solid #f0f3f1;
+      background: #fff;
+    }
+
+    .nav-inner {
+      min-height: 48px;
+
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .category-button {
+      border: 0;
+      background: var(--green);
+
+      color: #fff;
+
+      padding: 10px 17px;
+      border-radius: 9px;
+
+      font-size: 13px;
+      font-weight: 800;
+
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 700;
+      color: #53635b;
+
+      padding: 15px 0;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--green);
+    }
+
+    .nav-links a.active::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 7px;
+
+      height: 2px;
+
+      border-radius: 2px;
+
+      background: var(--green);
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      padding: 22px 0 12px;
+    }
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.65fr)
+        minmax(270px, 0.75fr);
+
+      gap: 16px;
+    }
+
+    .hero-main {
+      min-height: 390px;
+
+      position: relative;
+      overflow: hidden;
+
+      border-radius: var(--radius-lg);
+
+      background:
+        linear-gradient(
+          110deg,
+          #e5f8ee 0%,
+          #f6fbf4 52%,
+          #e4f6c8 100%
+        );
+
+      border: 1px solid #d9eee2;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-main::after {
+      content: "";
+
+      position: absolute;
+
+      width: 380px;
+      height: 380px;
+
+      border-radius: 50%;
+
+      right: -140px;
+      top: -100px;
+
+      background:
+        rgba(167, 217, 76, 0.18);
+    }
+
+    .hero-content {
+      width: 52%;
+      padding: 45px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+
+      padding: 7px 11px;
+
+      border-radius: 30px;
+
+      background: #fff;
+      color: var(--green);
+
+      font-size: 11px;
+      font-weight: 900;
+
+      margin-bottom: 16px;
+
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-content h1 {
+      font-size: clamp(32px, 4vw, 58px);
+
+      line-height: 1.02;
+
+      letter-spacing: -2.5px;
+
+      color: var(--dark);
+
+      margin-bottom: 14px;
+    }
+
+    .hero-content h1 span {
+      color: var(--green);
+    }
+
+    .hero-content p {
+      max-width: 450px;
+
+      color: #64756d;
+
+      font-size: 15px;
+      line-height: 1.7;
+
+      margin-bottom: 23px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      border-radius: 11px;
+
+      padding: 12px 19px;
+
+      font-size: 13px;
+      font-weight: 900;
+
+      border: 0;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+
+      box-shadow:
+        0 9px 20px
+        rgba(11, 143, 85, 0.2);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--green);
+
+      border: 1px solid #d8e7de;
+    }
+
+    .hero-image {
+      position: absolute;
+
+      right: 0;
+      bottom: 0;
+
+      width: 55%;
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 15px;
+
+      z-index: 1;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      mix-blend-mode: multiply;
+    }
+
+    .hero-side {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .promo-card {
+      border-radius: var(--radius);
+
+      padding: 24px;
+
+      position: relative;
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .promo-card.green {
+      background:
+        linear-gradient(
+          135deg,
+          #e7f8ed,
+          #c9efd8
+        );
+    }
+
+    .promo-card.yellow {
+      background:
+        linear-gradient(
+          135deg,
+          #fff8d8,
+          #fff0a5
+        );
+    }
+
+    .promo-card h3 {
+      font-size: 23px;
+      line-height: 1.15;
+
+      max-width: 190px;
+
+      margin-bottom: 8px;
+    }
+
+    .promo-card p {
+      color: #65736c;
+
+      font-size: 12px;
+
+      max-width: 210px;
+
+      margin-bottom: 14px;
+    }
+
+    .promo-link {
+      color: var(--green-dark);
+
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .promo-circle {
+      position: absolute;
+
+      right: -25px;
+      bottom: -40px;
+
+      width: 160px;
+      height: 160px;
+
+      border-radius: 50%;
+
+      background: rgba(255, 255, 255, 0.6);
+
+      display: grid;
+      place-items: center;
+
+      font-size: 65px;
+    }
+
+    /* =========================================================
+       SECTION
+       ========================================================= */
+
+    .section {
+      padding: 30px 0 5px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      color: var(--dark);
+
+      letter-spacing: -0.7px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .view-all {
+      color: var(--green);
+
+      font-size: 12px;
+      font-weight: 900;
+
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* =========================================================
+       CATEGORIES
+       ========================================================= */
+
+    .category-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(8, 1fr);
+
+      gap: 12px;
+    }
+
+    .category-card {
+      background: #fff;
+
+      border: 1px solid var(--border);
+
+      border-radius: 16px;
+
+      padding: 16px 10px;
+
+      text-align: center;
+
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        border-color 0.2s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+
+      border-color: #c9e5d6;
+
+      box-shadow: var(--shadow);
+    }
+
+    .category-icon {
+      width: 68px;
+      height: 68px;
+
+      margin: 0 auto 9px;
+
+      border-radius: 50%;
+
+      background: var(--green-light);
+
+      display: grid;
+      place-items: center;
+
+      font-size: 32px;
+    }
+
+    .category-card h4 {
+      font-size: 12px;
+      color: var(--dark);
+
+      line-height: 1.3;
+    }
+
+    .category-card span {
+      display: block;
+
+      color: #9aa69f;
+
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    /* =========================================================
+       PRODUCT SECTION
+       ========================================================= */
+
+    .products-section {
+      padding-top: 35px;
+    }
+
+    .products-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(5, 1fr);
+
+      gap: 14px;
+    }
+
+    .product-card {
+      background: #fff;
+
+      border: 1px solid var(--border);
+
+      border-radius: 17px;
+
+      overflow: hidden;
+
+      position: relative;
+
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        border-color 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+
+      box-shadow: var(--shadow);
+
+      border-color: #cce5d7;
+    }
+
+    .product-image {
+      height: 190px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #f9fbfa,
+          #f0f6f2
+        );
+
+      position: relative;
+
+      display: grid;
+      place-items: center;
+
+      padding: 16px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      transition: transform 0.25s;
+    }
+
+    .product-card:hover
+    .product-image img {
+      transform: scale(1.06);
+    }
+
+    .discount-badge {
+      position: absolute;
+
+      top: 10px;
+      left: 10px;
+
+      padding: 5px 8px;
+
+      border-radius: 7px;
+
+      background: var(--red);
+      color: #fff;
+
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .wishlist {
+      position: absolute;
+
+      top: 9px;
+      right: 9px;
+
+      width: 33px;
+      height: 33px;
+
+      border-radius: 50%;
+
+      background: #fff;
+
+      border: 1px solid #edf0ee;
+
+      display: grid;
+      place-items: center;
+
+      font-size: 16px;
+
+      transition: 0.2s;
+    }
+
+    .wishlist:hover {
+      color: var(--red);
+      border-color: #f5caca;
+    }
+
+    .product-body {
+      padding: 14px;
+    }
+
+    .product-category {
+      color: #84928b;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      margin-bottom: 5px;
+    }
+
+    .product-title {
+      color: var(--dark);
+
+      font-size: 13px;
+      font-weight: 800;
+
+      line-height: 1.35;
+
+      min-height: 35px;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+
+      overflow: hidden;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      margin: 8px 0;
+    }
+
+    .stars {
+      color: #f7b500;
+      font-size: 11px;
+      letter-spacing: -2px;
+    }
+
+    .rating small {
+      color: #99a39e;
+      font-size: 10px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 11px;
+    }
+
+    .price {
+      color: var(--green-dark);
+
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .old-price {
+      color: #a1aaa5;
+
+      font-size: 11px;
+
+      text-decoration: line-through;
+    }
+
+    .add-btn {
+      width: 100%;
+
+      height: 38px;
+
+      border: 1px solid #cce5d7;
+
+      border-radius: 10px;
+
+      background: var(--green-light);
+
+      color: var(--green-dark);
+
+      font-size: 12px;
+      font-weight: 900;
+
+      transition: 0.2s;
+    }
+
+    .add-btn:hover {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+
+    /* =========================================================
+       FEATURE BANNER
+       ========================================================= */
+
+    .feature-banner {
+      margin-top: 35px;
+
+      min-height: 210px;
+
+      border-radius: 22px;
+
+      padding: 30px 38px;
+
+      background:
+        linear-gradient(
+          105deg,
+          #0a7d4b,
+          #0b9b5b
+        );
+
+      color: #fff;
+
+      position: relative;
+      overflow: hidden;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .feature-banner::before,
+    .feature-banner::after {
+      content: "";
+
+      position: absolute;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.08);
+    }
+
+    .feature-banner::before {
+      width: 280px;
+      height: 280px;
+
+      right: 60px;
+      top: -160px;
+    }
+
+    .feature-banner::after {
+      width: 220px;
+      height: 220px;
+
+      right: -70px;
+      bottom: -120px;
+    }
+
+    .feature-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .feature-content small {
+      color: #c8ffdc;
+
+      font-size: 11px;
+      font-weight: 900;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.4px;
+    }
+
+    .feature-content h2 {
+      font-size: 30px;
+
+      margin: 6px 0;
+
+      letter-spacing: -1px;
+    }
+
+    .feature-content p {
+      color: #d6f5e2;
+
+      font-size: 13px;
+
+      max-width: 500px;
+
+      margin-bottom: 14px;
+    }
+
+    .feature-btn {
+      display: inline-flex;
+
+      background: #fff;
+      color: var(--green-dark);
+
+      padding: 10px 16px;
+
+      border-radius: 9px;
+
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    /* =========================================================
+       BRAND GRID
+       ========================================================= */
+
+    .brand-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(6, 1fr);
+
+      gap: 12px;
+    }
+
+    .brand-card {
+      min-height: 90px;
+
+      border-radius: 15px;
+
+      background: #fff;
+
+      border: 1px solid var(--border);
+
+      display: grid;
+      place-items: center;
+
+      color: #68766f;
+
+      font-weight: 900;
+      font-size: 14px;
+
+      transition: 0.2s;
+    }
+
+    .brand-card:hover {
+      border-color: #c9e4d5;
+
+      color: var(--green);
+
+      transform: translateY(-2px);
+
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* =========================================================
+       TRUST SECTION
+       ========================================================= */
+
+    .trust-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 14px;
+    }
+
+    .trust-card {
+      background: #fff;
+
+      border: 1px solid var(--border);
+
+      border-radius: 17px;
+
+      padding: 22px;
+
+      display: flex;
+      align-items: flex-start;
+
+      gap: 13px;
+    }
+
+    .trust-icon {
+      flex: 0 0 43px;
+
+      width: 43px;
+      height: 43px;
+
+      border-radius: 12px;
+
+      background: var(--green-light);
+
+      display: grid;
+      place-items: center;
+
+      font-size: 20px;
+    }
+
+    .trust-card h4 {
+      font-size: 13px;
+
+      margin-bottom: 4px;
+    }
+
+    .trust-card p {
+      color: var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1.55;
+    }
+
+    /* =========================================================
+       REVIEWS
+       ========================================================= */
+
+    .review-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 14px;
+    }
+
+    .review-card {
+      background: #fff;
+
+      border: 1px solid var(--border);
+
+      border-radius: 17px;
+
+      padding: 22px;
+    }
+
+    .review-top {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      margin-bottom: 13px;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          #d9f2e5,
+          #b8e5cc
+        );
+
+      display: grid;
+      place-items: center;
+
+      font-weight: 900;
+
+      color: var(--green-dark);
+    }
+
+    .review-name {
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .review-location {
+      color: #9aa39f;
+
+      font-size: 10px;
+    }
+
+    .review-card p {
+      color: #65726c;
+
+      font-size: 12px;
+
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       NEWSLETTER
+       ========================================================= */
+
+    .newsletter {
+      margin-top: 35px;
+
+      padding: 32px;
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #edf9f2,
+          #f8fbe9
+        );
+
+      border: 1px solid #dceee2;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+    .newsletter h2 {
+      font-size: 22px;
+      color: var(--dark);
+
+      margin-bottom: 5px;
+    }
+
+    .newsletter p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .subscribe {
+      display: flex;
+
+      width: min(100%, 390px);
+
+      height: 46px;
+
+      background: #fff;
+
+      border: 1px solid #dce6df;
+
+      border-radius: 11px;
+
+      overflow: hidden;
+    }
+
+    .subscribe input {
+      flex: 1;
+
+      border: 0;
+      outline: 0;
+
+      padding: 0 14px;
+
+      font-size: 12px;
+    }
+
+    .subscribe button {
+      border: 0;
+
+      background: var(--green);
+
+      color: #fff;
+
+      padding: 0 17px;
+
+      font-size: 12px;
+
+      font-weight: 900;
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .footer {
+      margin-top: 45px;
+
+      background: #10221a;
+
+      color: #dbe7e0;
+    }
+
+    .footer-main {
+      padding: 45px 0 35px;
+
+      display: grid;
+
+      grid-template-columns:
+        1.5fr
+        1fr
+        1fr
+        1fr;
+
+      gap: 35px;
+    }
+
+    .footer-brand p {
+      color: #9daf a5;
+      color: #9daf a5;
+
+      font-size: 12px;
+
+      line-height: 1.7;
+
+      max-width: 310px;
+
+      margin: 14px 0 18px;
+    }
+
+    .footer-logo strong {
+      color: #fff;
+
+      font-size: 22px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 8px;
+    }
+
+    .social {
+      width: 34px;
+      height: 34px;
+
+      border-radius: 9px;
+
+      background: rgba(255,255,255,0.07);
+
+      display: grid;
+      place-items: center;
+
+      font-size: 13px;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+
+      font-size: 13px;
+
+      margin-bottom: 14px;
+    }
+
+    .footer-col a {
+      display: block;
+
+      color: #a9b9b1;
+
+      font-size: 11px;
+
+      margin-bottom: 9px;
+    }
+
+    .footer-col a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+
+      min-height: 55px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      color: #84968d;
+
+      font-size: 10px;
+    }
+
+    /* =========================================================
+       MOBILE BOTTOM NAV
+       ========================================================= */
+
+    .mobile-bottom {
+      display: none;
+    }
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    .toast {
+      position: fixed;
+
+      left: 50%;
+      bottom: 25px;
+
+      transform:
+        translate(-50%, 100px);
+
+      opacity: 0;
+
+      z-index: 5000;
+
+      background: #17231d;
+      color: #fff;
+
+      padding: 12px 18px;
+
+      border-radius: 10px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      box-shadow: var(--shadow);
+
+      transition: 0.3s;
+    }
+
+    .toast.show {
+      transform:
+        translate(-50%, 0);
+
+      opacity: 1;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1100px) {
+
+      .header-main {
+        grid-template-columns:
+          auto
+          1fr
+          auto;
+
+        gap: 14px;
+      }
+
+      .header-actions .label {
+        display: none;
+      }
+
+      .category-grid {
+        grid-template-columns:
+          repeat(6, 1fr);
+      }
+
+      .products-grid {
+        grid-template-columns:
+          repeat(4, 1fr);
+      }
+
+      .brand-grid {
+        grid-template-columns:
+          repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-side {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+      }
+
+      .hero-main {
+        min-height: 360px;
+      }
+
+      .hero-content {
+        width: 58%;
+        padding: 35px;
+      }
+
+      .hero-image {
+        width: 50%;
+      }
+
+      .products-grid {
+        grid-template-columns:
+          repeat(3, 1fr);
+      }
+
+      .trust-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .footer-main {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+
+      .container {
+        width:
+          min(
+            calc(100% - 22px),
+            var(--container)
+          );
+      }
+
+      .offer-bar {
+        font-size: 11px;
+      }
+
+      .header-main {
+        min-height: auto;
+
+        padding: 12px 0;
+
+        grid-template-columns:
+          1fr auto;
+
+        grid-template-areas:
+          "logo actions"
+          "search search";
+      }
+
+      .logo {
+        grid-area: logo;
+      }
+
+      .header-actions {
+        grid-area: actions;
+      }
+
+      .search-box {
+        grid-area: search;
+
+        height: 44px;
+      }
+
+      .header-action {
+        width: 40px;
+        height: 40px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 12px;
+      }
+
+      .hero-main {
+        min-height: 490px;
+        align-items: flex-start;
+      }
+
+      .hero-content {
+        width: 100%;
+        padding: 27px;
+      }
+
+      .hero-content h1 {
+        font-size: 38px;
+      }
+
+      .hero-content p {
+        max-width: 100%;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 54%;
+
+        top: auto;
+        bottom: 0;
+
+        align-items: flex-end;
+      }
+
+      .hero-side {
+        display: grid;
+      }
+
+      .promo-card {
+        min-height: 155px;
+      }
+
+      .category-grid {
+        display: flex;
+
+        overflow-x: auto;
+
+        gap: 10px;
+
+        padding-bottom: 6px;
+
+        scrollbar-width: none;
+      }
+
+      .category-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .category-card {
+        flex: 0 0 105px;
+      }
+
+      .products-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        gap: 10px;
+      }
+
+      .product-image {
+        height: 155px;
+      }
+
+      .product-body {
+        padding: 11px;
+      }
+
+      .product-title {
+        font-size: 12px;
+      }
+
+      .price {
+        font-size: 15px;
+      }
+
+      .feature-banner {
+        padding: 25px;
+      }
+
+      .feature-content h2 {
+        font-size: 24px;
+      }
+
+      .brand-grid {
+        grid-template-columns:
+          repeat(3, 1fr);
+
+        gap: 8px;
+      }
+
+      .brand-card {
+        min-height: 70px;
+
+        font-size: 11px;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px;
+      }
+
+      .subscribe {
+        width: 100%;
+      }
+
+      .footer-main {
+        grid-template-columns:
+          1fr 1fr;
+
+        gap: 25px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        padding: 14px 0;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 5px;
+      }
+
+      .mobile-bottom {
+        position: fixed;
+
+        display: grid;
+
+        grid-template-columns:
+          repeat(4, 1fr);
+
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+
+        height: 60px;
+
+        background:
+          rgba(255,255,255,0.96);
+
+        backdrop-filter: blur(15px);
+
+        border: 1px solid #dfe8e3;
+
+        border-radius: 17px;
+
+        z-index: 3000;
+
+        box-shadow:
+          0 10px 35px
+          rgba(18, 49, 35, 0.16);
+      }
+
+      .mobile-bottom a {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        flex-direction: column;
+
+        gap: 2px;
+
+        font-size: 18px;
+
+        color: #7b8982;
+      }
+
+      .mobile-bottom span {
+        font-size: 9px;
+        font-weight: 800;
+      }
+
+      .mobile-bottom a.active {
+        color: var(--green);
+      }
+
+      body {
+        padding-bottom: 78px;
+      }
+    }
+
+    @media (max-width: 420px) {
+
+      .hero-side {
+        grid-template-columns: 1fr;
+      }
+
+      .promo-card {
+        min-height: 135px;
+      }
+
+      .section-title {
+        font-size: 20px;
+      }
+
+      .product-image {
+        height: 140px;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =======================================================
+       OFFER BAR
+       ======================================================= -->
+
+  <div class="offer-bar">
+    🚚 Free delivery on selected orders
+    &nbsp; • &nbsp;
+    <span>Shop fresh. Save more. Live better.</span>
+  </div>
+
+
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
+  <header class="header">
+
+    <div class="container header-main">
+
+      <!-- LOGO -->
+
+      <a href="#" class="logo">
+
+        <div class="logo-mark">
+          F
+        </div>
+
+        <div class="logo-text">
+          <strong>Family Bazar</strong>
+          <small>YOUR FAMILY'S ONLINE BAZAR</small>
+        </div>
+
+      </a>
+
+
+      <!-- SEARCH -->
+
+      <div class="search-box">
+
+        <div class="search-icon">
+          🔎
+        </div>
+
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search products, brands & categories..."
+          autocomplete="off"
+        >
+
+        <button
+          type="button"
+          onclick="performSearch()"
+        >
+          Search
+        </button>
+
+      </div>
+
+
+      <!-- ACTIONS -->
+
+      <div class="header-actions">
+
+        <button
+          class="header-action"
+          type="button"
+          onclick="showToast('Wishlist coming soon')"
+          aria-label="Wishlist"
+        >
+          ♡
+          <span class="label">Wishlist</span>
+        </button>
+
+        <button
+          class="header-action"
+          type="button"
+          onclick="showToast('Login page coming next')"
+          aria-label="Account"
+        >
+          👤
+          <span class="label">Account</span>
+        </button>
+
+        <button
+          class="header-action"
+          type="button"
+          onclick="showToast('Your cart is ready')"
+          aria-label="Shopping Cart"
+        >
+          🛒
+          <span class="label">Cart</span>
+
+          <span
+            class="cart-count"
+            id="cartCount"
+          >
+            0
+          </span>
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         NAV
+         ===================================================== -->
+
+    <div class="nav">
+
+      <div class="container nav-inner">
+
+        <button
+          class="category-button"
+          type="button"
+          onclick="scrollToSection('categories')"
+        >
+          ☰
+          All Categories
+        </button>
+
+        <nav class="nav-links">
+
+          <a
+            href="#"
+            class="active"
+          >
+            Home
+          </a>
+
+          <a href="#categories">
+            Categories
+          </a>
+
+          <a href="#best-selling">
+            Best Selling
+          </a>
+
+          <a href="#new-arrivals">
+            New Arrivals
+          </a>
+
+          <a href="#brands">
+            Brands
+          </a>
+
+          <a href="#reviews">
+            Reviews
+          </a>
+
+          <a href="#about">
+            About Us
+          </a>
+
+        </nav>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================================
+       MAIN
+       ======================================================= -->
+
+  <main>
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+
+        <!-- MAIN HERO -->
+
+        <div class="hero-main">
+
+          <div class="hero-content">
+
+            <div class="hero-badge">
+              🛍️ Welcome to Family Bazar
+            </div>
+
+            <h1>
+              Everything Your
+              <span>Family</span>
+              Needs.
+            </h1>
+
+            <p>
+              Fresh groceries, trusted brands and daily
+              essentials delivered to your doorstep.
+              Simple shopping for every family.
+            </p>
+
+            <div class="hero-buttons">
+
+              <a
+                href="#best-selling"
+                class="btn-primary"
+              >
+                Shop Now →
+              </a>
+
+              <a
+                href="#categories"
+                class="btn-secondary"
+              >
+                Explore Categories
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <!--
+            User supplied reference image.
+            GitHub repository:
+            shahneilkhan/familybazar
+          -->
+
+          <div class="hero-image">
+
+            <img
+              src="https://raw.githubusercontent.com/shahneilkhan/familybazar/main/Frame%20399.jpg"
+              alt="Family Bazar"
+              onerror="this.style.display='none'"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- SIDE PROMOTIONS -->
+
+        <div class="hero-side">
+
+          <div class="promo-card green">
+
+            <h3>
+              Freshness
+              Delivered
+            </h3>
+
+            <p>
+              Everyday essentials carefully selected
+              for your family.
+            </p>
+
+            <a
+              href="#best-selling"
+              class="promo-link"
+            >
+              Shop Fresh Products →
+            </a>
+
+            <div class="promo-circle">
+              🥬
+            </div>
+
+          </div>
+
+
+          <div class="promo-card yellow">
+
+            <h3>
+              Save More
+              Every Day
+            </h3>
+
+            <p>
+              Discover exciting offers and family-friendly
+              prices.
+            </p>
+
+            <a
+              href="#offers"
+              class="promo-link"
+            >
+              Explore Offers →
+            </a>
+
+            <div class="promo-circle">
+              🛒
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CATEGORIES
+         ===================================================== -->
+
+    <section
+      class="section"
+      id="categories"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <h2 class="section-title">
+              Shop by Category
+            </h2>
+
+            <p class="section-subtitle">
+              Everything you need, organized for easy shopping.
+            </p>
+
+          </div>
+
+          <a
+            href="#"
+            class="view-all"
+          >
+            View All →
+          </a>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+          <a
+            href="#"
+            class="category-card"
+          >
+            <div class="category-icon">
+              🍚
+            </div>
+
+            <h4>
+              Rice
+            </h4>
+
+            <span>
+              24+ Items
+            </span>
+          </a>
+
+
+          <a
+            href="#"
+            class="category-card"
+          >
+            <div class="category-icon">
+              🌾
+            </div>
+
+            <h4>
+              Flour & Lentils
+            </h4>
+
+            <span>
+              35+ Items
+            </span>
+          </a>
+
+
+          <a
+            href="#"
+            class="category-card"
+          >
+            <div class="category-icon">
+              🫙
+            </div>
+
+            <h4>
+              Oil & Ghee
+            </h4>
+
+            <span>
+              20+ Items
+            </span>
+          </a>
+
+
+          <a
+            href="#"
+            class="category-card"
+          >
+            <div class="category-icon">
+              🍯
+            </div>
+
+            <h4>
+              Honey
+            </h4>
+
+            <span>
+              18+ Items
+            </span>
+          </a>
+
+
+          <a
+            href="#"
+            class="category-card"
+          >
+            <div class="category-icon">
+              🌴
+            </div>
+
+            <h4>
+              Dates
+            </h4>
+
+            <span>
+              22+ Items
+            </span>
+          </a>
+
+
+          <a
+            href="#"
+            class="category-card"
+          >
+            <div class="category-icon">
+              🌶️
+            </div>
+
+            <h4>
+              Spices
+            </h4>
+
+            <span>
+              45+ Items
+            </span>
+          </a>
+
+
+          <a
+            href="#"
+            class="category-card"
+          >
+            <div class="category-icon">
+              🥜
+            </div>
+
+            <h4>
+              Nuts & Seeds
+            </h4>
+
+            <span>
+              28+ Items
+            </span>
+          </a>
+
+
+          <a
+            href="#"
+            class="category-card"
+          >
+            <div class="category-icon">
+              ☕
+            </div>
+
+            <h4>
+              Tea & Coffee
+            </h4>
+
+            <span>
+              19+ Items
+            </span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BEST SELLING
+         ===================================================== -->
+
+    <section
+      class="section products-section"
+      id="best-selling"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <h2 class="section-title">
+              Best Selling Products
+            </h2>
+
+            <p class="section-subtitle">
+              Customer favorites picked for your family.
+            </p>
+
+          </div>
+
+          <a
+            href="#"
+            class="view-all"
+          >
+            View All →
+          </a>
+
+        </div>
+
+
+        <div class="products-grid">
+
+
+          <!-- PRODUCT 1 -->
+
+          <article
+            class="product-card"
+            data-name="Premium Natural Honey"
+          >
+
+            <div class="product-image">
+
+              <span class="discount-badge">
+                -15%
+              </span>
+
+              <button
+                class="wishlist"
+                onclick="toggleWishlist(this)"
+                aria-label="Add to wishlist"
+              >
+                ♡
+              </button>
+
+              <img
+                src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80"
+                alt="Natural Honey"
+              >
+
+            </div>
+
+            <div class="product-body">
+
+              <div class="product-category">
+                Honey
+              </div>
+
+              <h3 class="product-title">
+                Premium Natural Honey 500g
+              </h3>
+
+              <div class="rating">
+                <span class="stars">
+                  ★★★★★
+                </span>
+
+                <small>
+                  4.9 (126)
+                </small>
+              </div>
+
+              <div class="price-row">
+
+                <span class="price">
+                  ৳450
+                </span>
+
+                <span class="old-price">
+                  ৳530
+                </span>
+
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Premium Natural Honey 500g', 450)"
+              >
+                + Add to Cart
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- PRODUCT 2 -->
+
+          <article
+            class="product-card"
+            data-name="Premium Basmati Rice"
+          >
+
+            <div class="product-image">
+
+              <span class="discount-badge">
+                -10%
+              </span>
+
+              <button
+                class="wishlist"
+                onclick="toggleWishlist(this)"
+              >
+                ♡
+              </button>
+
+              <img
+                src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80"
+                alt="Rice"
+              >
+
+            </div>
+
+            <div class="product-body">
+
+              <div class="product-category">
+                Rice
+              </div>
+
+              <h3 class="product-title">
+                Premium Basmati Rice 5kg
+              </h3>
+
+              <div class="rating">
+
+                <span class="stars">
+                  ★★★★★
+                </span>
+
+                <small>
+                  4.8 (98)
+                </small>
+
+              </div>
+
+              <div class="price-row">
+
+                <span class="price">
+                  ৳780
+                </span>
+
+                <span class="old-price">
+                  ৳860
+                </span>
+
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Premium Basmati Rice 5kg', 780)"
+              >
+                + Add to Cart
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- PRODUCT 3 -->
+
+          <article
+            class="product-card"
+            data-name="Organic Black Seed"
+          >
+
+            <div class="product-image">
+
+              <span class="discount-badge">
+                -12%
+              </span>
+
+              <button
+                class="wishlist"
+                onclick="toggleWishlist(this)"
+              >
+                ♡
+              </button>
+
+              <img
+                src="https://images.unsplash.com/photo-1606791422814-b32c9a3f2d85?auto=format&fit=crop&w=600&q=80"
+                alt="Black Seed"
+              >
+
+            </div>
+
+            <div class="product-body">
+
+              <div class="product-category">
+                Nuts & Seeds
+              </div>
+
+              <h3 class="product-title">
+                Organic Black Seed 250g
+              </h3>
+
+              <div class="rating">
+
+                <span class="stars">
+                  ★★★★★
+                </span>
+
+                <small>
+                  4.9 (75)
+                </small>
+
+              </div>
+
+              <div class="price-row">
+
+                <span class="price">
+                  ৳220
+                </span>
+
+                <span class="old-price">
+                  ৳250
+                </span>
+
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Organic Black Seed 250g', 220)"
+              >
+                + Add to Cart
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- PRODUCT 4 -->
+
+          <article
+            class="product-card"
+            data-name="Premium Dates"
+          >
+
+            <div class="product-image">
+
+              <span class="discount-badge">
+                -18%
+              </span>
+
+              <button
+                class="wishlist"
+                onclick="toggleWishlist(this)"
+              >
+                ♡
+              </button>
+
+              <img
+                src="https://images.unsplash.com/photo-1590080875515-8a0c9f6d4f0f?auto=format&fit=crop&w=600&q=80"
+                alt="Dates"
+              >
+
+            </div>
+
+            <div class="product-body">
+
+              <div class="product-category">
+                Dates
+              </div>
+
+              <h3 class="product-title">
+                Premium Arabian Dates 500g
+              </h3>
+
+              <div class="rating">
+
+                <span class="stars">
+                  ★★★★★
+                </span>
+
+                <small>
+                  4.9 (142)
+                </small>
+
+              </div>
+
+              <div class="price-row">
+
+                <span class="price">
+                  ৳390
+                </span>
+
+                <span class="old-price">
+                  ৳475
+                </span>
+
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Premium Arabian Dates 500g', 390)"
+              >
+                + Add to Cart
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- PRODUCT 5 -->
+
+          <article
+            class="product-card"
+            data-name="Cold Pressed Mustard Oil"
+          >
+
+            <div class="product-image">
+
+              <span class="discount-badge">
+                -8%
+              </span>
+
+              <button
+                class="wishlist"
+                onclick="toggleWishlist(this)"
+              >
+                ♡
+              </button>
+
+              <img
+                src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80"
+                alt="Mustard Oil"
+              >
+
+            </div>
+
+            <div class="product-body">
+
+              <div class="product-category">
+                Oil & Ghee
+              </div>
+
+              <h3 class="product-title">
+                Cold Pressed Mustard Oil 1L
+              </h3>
+
+              <div class="rating">
+
+                <span class="stars">
+                  ★★★★★
+                </span>
+
+                <small>
+                  4.8 (63)
+                </small>
+
+              </div>
+
+              <div class="price-row">
+
+                <span class="price">
+                  ৳310
+                </span>
+
+                <span class="old-price">
+                  ৳338
+                </span>
+
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Cold Pressed Mustard Oil 1L', 310)"
+              >
+                + Add to Cart
+              </button>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROMOTIONAL BANNER
+         ===================================================== -->
+
+    <section
+      class="container"
+      id="offers"
+    >
+
+      <div class="feature-banner">
+
+        <div class="feature-content">
+
+          <small>
+            Family Bazar Special
+          </small>
+
+          <h2>
+            Good Food.
+            Better Family.
+          </h2>
+
+          <p>
+            Discover quality products for your everyday
+            family needs — at prices you'll love.
+          </p>
+
+          <a
+            href="#best-selling"
+            class="feature-btn"
+          >
+            Shop Collection →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NEW ARRIVALS
+         ===================================================== -->
+
+    <section
+      class="section products-section"
+      id="new-arrivals"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <h2 class="section-title">
+              New Arrivals
+            </h2>
+
+            <p class="section-subtitle">
+              Fresh products recently added to Family Bazar.
+            </p>
+
+          </div>
+
+          <a
+            href="#"
+            class="view-all"
+          >
+            View All →
+          </a>
+
+        </div>
+
+
+        <div class="products-grid">
+
+
+          <article
+            class="product-card"
+            data-name="Organic Green Tea"
+          >
+
+            <div class="product-image">
+
+              <span class="discount-badge">
+                NEW
+              </span>
+
+              <button
+                class="wishlist"
+                onclick="toggleWishlist(this)"
+              >
+                ♡
+              </button>
+
+              <img
+                src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=600&q=80"
+                alt="Green Tea"
+              >
+
+            </div>
+
+            <div class="product-body">
+
+              <div class="product-category">
+                Tea & Coffee
+              </div>
+
+              <h3 class="product-title">
+                Premium Organic Green Tea
+              </h3>
+
+              <div class="rating">
+                <span class="stars">
+                  ★★★★★
+                </span>
+                <small>
+                  New
+                </small>
+              </div>
+
+              <div class="price-row">
+                <span class="price">
+                  ৳280
+                </span>
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Premium Organic Green Tea', 280)"
+              >
+                + Add to Cart
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="product-card"
+            data-name="Premium Cashew Nuts"
+          >
+
+            <div class="product-image">
+
+              <span class="discount-badge">
+                NEW
+              </span>
+
+              <button
+                class="wishlist"
+                onclick="toggleWishlist(this)"
+              >
+                ♡
+              </button>
+
+              <img
+                src="https://images.unsplash.com/photo-1536591375310-59b9d5c1f2b6?auto=format&fit=crop&w=600&q=80"
+                alt="Cashew Nuts"
+              >
+
+            </div>
+
+            <div class="product-body">
+
+              <div class="product-category">
+                Nuts & Seeds
+              </div>
+
+              <h3 class="product-title">
+                Premium Cashew Nuts 250g
+              </h3>
+
+              <div class="rating">
+                <span class="stars">
+                  ★★★★★
+                </span>
+                <small>
+                  New
+                </small>
+              </div>
+
+              <div class="price-row">
+                <span class="price">
+                  ৳420
+                </span>
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Premium Cashew Nuts 250g', 420)"
+              >
+                + Add to Cart
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="product-card"
+            data-name="Pure Ghee"
+          >
+
+            <div class="product-image">
+
+              <span class="discount-badge">
+                NEW
+              </span>
+
+              <button
+                class="wishlist"
+                onclick="toggleWishlist(this)"
+              >
+                ♡
+              </button>
+
+              <img
+                src="https://images.unsplash.com/photo-1635274605631-4e9b7d5b8b3e?auto=format&fit=crop&w=600&q=80"
+                alt="Ghee"
+              >
+
+            </div>
+
+            <div class="product-body">
+
+              <div class="product-category">
+                Oil & Ghee
+              </div>
+
+              <h3 class="product-title">
+                Traditional Pure Ghee 500g
+              </h3>
+
+              <div class="rating">
+                <span class="stars">
+                  ★★★★★
+                </span>
+                <small>
+                  New
+                </small>
+              </div>
+
+              <div class="price-row">
+                <span class="price">
+                  ৳690
+                </span>
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Traditional Pure Ghee 500g', 690)"
+              >
+                + Add to Cart
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="product-card"
+            data-name="Premium Chia Seeds"
+          >
+
+            <div class="product-image">
+
+              <span class="discount-badge">
+                NEW
+              </span>
+
+              <button
+                class="wishlist"
+                onclick="toggleWishlist(this)"
+              >
+                ♡
+              </button>
+
+              <img
+                src="https://images.unsplash.com/photo-1601055903647-ddf1ee9701b7?auto=format&fit=crop&w=600&q=80"
+                alt="Chia Seeds"
+              >
+
+            </div>
+
+            <div class="product-body">
+
+              <div class="product-category">
+                Nuts & Seeds
+              </div>
+
+              <h3 class="product-title">
+                Premium Chia Seeds 250g
+              </h3>
+
+              <div class="rating">
+                <span class="stars">
+                  ★★★★★
+                </span>
+                <small>
+                  New
+                </small>
+              </div>
+
+              <div class="price-row">
+                <span class="price">
+                  ৳250
+                </span>
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Premium Chia Seeds 250g', 250)"
+              >
+                + Add to Cart
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <article
+            class="product-card"
+            data-name="Organic Turmeric Powder"
+          >
+
+            <div class="product-image">
+
+              <span class="discount-badge">
+                NEW
+              </span>
+
+              <button
+                class="wishlist"
+                onclick="toggleWishlist(this)"
+              >
+                ♡
+              </button>
+
+              <img
+                src="https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=600&q=80"
+                alt="Turmeric Powder"
+              >
+
+            </div>
+
+            <div class="product-body">
+
+              <div class="product-category">
+                Spices
+              </div>
+
+              <h3 class="product-title">
+                Organic Turmeric Powder 200g
+              </h3>
+
+              <div class="rating">
+                <span class="stars">
+                  ★★★★★
+                </span>
+                <small>
+                  New
+                </small>
+              </div>
+
+              <div class="price-row">
+                <span class="price">
+                  ৳145
+                </span>
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Organic Turmeric Powder 200g', 145)"
+              >
+                + Add to Cart
+              </button>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BRANDS
+         ===================================================== -->
+
+    <section
+      class="section"
+      id="brands"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <h2 class="section-title">
+              Popular Brands
+            </h2>
+
+            <p class="section-subtitle">
+              Trusted names for your everyday shopping.
+            </p>
+
+          </div>
+
+          <a
+            href="#"
+            class="view-all"
+          >
+            All Brands →
+          </a>
+
+        </div>
+
+
+        <div class="brand-grid">
+
+          <div class="brand-card">
+            FAMILY BAZAR
+          </div>
+
+          <div class="brand-card">
+            PRAN
+          </div>
+
+          <div class="brand-card">
+            FRESH
+          </div>
+
+          <div class="brand-card">
+            TEER
+          </div>
+
+          <div class="brand-card">
+            ACI
+          </div>
+
+          <div class="brand-card">
+            RUPCHANDA
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WHY FAMILY BAZAR
+         ===================================================== -->
+
+    <section
+      class="section"
+      id="about"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <h2 class="section-title">
+              Why Family Bazar?
+            </h2>
+
+            <p class="section-subtitle">
+              Shopping made simple, reliable and family-friendly.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="trust-grid">
+
+
+          <div class="trust-card">
+
+            <div class="trust-icon">
+              🚚
+            </div>
+
+            <div>
+
+              <h4>
+                Fast Delivery
+              </h4>
+
+              <p>
+                Get your everyday essentials delivered
+                conveniently to your doorstep.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="trust-card">
+
+            <div class="trust-icon">
+              🛡️
+            </div>
+
+            <div>
+
+              <h4>
+                Trusted Quality
+              </h4>
+
+              <p>
+                We focus on reliable products and
+                trusted brands for your family.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="trust-card">
+
+            <div class="trust-icon">
+              💳
+            </div>
+
+            <div>
+
+              <h4>
+                Secure Payment
+              </h4>
+
+              <p>
+                Flexible payment options with a
+                simple and secure checkout experience.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="trust-card">
+
+            <div class="trust-icon">
+              💚
+            </div>
+
+            <div>
+
+              <h4>
+                Family First
+              </h4>
+
+              <p>
+                Products selected around the real needs
+                of modern Bangladeshi families.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         REVIEWS
+         ===================================================== -->
+
+    <section
+      class="section"
+      id="reviews"
+    >
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+
+            <h2 class="section-title">
+              What Families Say
+            </h2>
+
+            <p class="section-subtitle">
+              Real shopping experiences from our customers.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="review-grid">
+
+
+          <div class="review-card">
+
+            <div class="review-top">
+
+              <div class="avatar">
+                R
+              </div>
+
+              <div>
+
+                <div class="review-name">
+                  Rahim Ahmed
+                </div>
+
+                <div class="review-location">
+                  Dhaka
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <p>
+              Very easy to order and the products arrived
+              nicely packed. I especially liked the grocery
+              collection.
+            </p>
+
+          </div>
+
+
+          <div class="review-card">
+
+            <div class="review-top">
+
+              <div class="avatar">
+                S
+              </div>
+
+              <div>
+
+                <div class="review-name">
+                  Sadia Jahan
+                </div>
+
+                <div class="review-location">
+                  Chattogram
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <p>
+              Family Bazar makes regular shopping much easier.
+              The product categories are simple to understand.
+            </p>
+
+          </div>
+
+
+          <div class="review-card">
+
+            <div class="review-top">
+
+              <div class="avatar">
+                N
+              </div>
+
+              <div>
+
+                <div class="review-name">
+                  Nusrat Karim
+                </div>
+
+                <div class="review-location">
+                  Sylhet
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <p>
+              I like the clean shopping experience and the
+              family-oriented product selection.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NEWSLETTER
+         ===================================================== -->
+
+    <section class="container">
+
+      <div class="newsletter">
+
+        <div>
+
+          <h2>
+            Get Family Bazar Offers
+          </h2>
+
+          <p>
+            Subscribe to receive new products, offers and
+            special discounts.
+          </p>
+
+        </div>
+
+
+        <form
+          class="subscribe"
+          onsubmit="subscribeUser(event)"
+        >
+
+          <input
+            type="email"
+            id="emailInput"
+            placeholder="Enter your email address"
+            required
+          >
+
+          <button type="submit">
+            Subscribe
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+       ======================================================= -->
+
+  <footer class="footer">
+
+    <div class="container footer-main">
+
+
+      <div class="footer-brand">
+
+        <a
+          href="#"
+          class="logo footer-logo"
+        >
+
+          <div class="logo-mark">
+            F
+          </div>
+
+          <div class="logo-text">
+
+            <strong>
+              Family Bazar
+            </strong>
+
+            <small>
+              YOUR FAMILY'S ONLINE BAZAR
+            </small>
+
+          </div>
+
+        </a>
+
+
+        <p>
+          Family Bazar is your convenient online destination
+          for groceries, food products and everyday family
+          essentials.
+        </p>
+
+
+        <div class="socials">
+
+          <a
+            href="#"
+            class="social"
+          >
+            f
+          </a>
+
+          <a
+            href="#"
+            class="social"
+          >
+            ▶
+          </a>
+
+          <a
+            href="#"
+            class="social"
+          >
+            ◎
+          </a>
+
+          <a
+            href="#"
+            class="social"
+          >
+            ☎
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>
+          Shop
+        </h4>
+
+        <a href="#categories">
+          All Categories
+        </a>
+
+        <a href="#best-selling">
+          Best Selling
+        </a>
+
+        <a href="#new-arrivals">
+          New Arrivals
+        </a>
+
+        <a href="#offers">
+          Offers
+        </a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>
+          Customer Care
+        </h4>
+
+        <a href="#">
+          My Account
+        </a>
+
+        <a href="#">
+          My Orders
+        </a>
+
+        <a href="#">
+          Track Order
+        </a>
+
+        <a href="#">
+          Contact Us
+        </a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>
+          Information
+        </h4>
+
+        <a href="#">
+          About Family Bazar
+        </a>
+
+        <a href="#">
+          Delivery Information
+        </a>
+
+        <a href="#">
+          Privacy Policy
+        </a>
+
+        <a href="#">
+          Terms & Conditions
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <span>
+        © 2026 Family Bazar. All rights reserved.
+      </span>
+
+      <span>
+        Made for Bangladeshi Families ❤️
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       MOBILE BOTTOM NAV
+       ======================================================= -->
+
+  <nav class="mobile-bottom">
+
+    <a
+      href="#"
+      class="active"
+    >
+      🏠
+      <span>
+        Home
+      </span>
+    </a>
+
+    <a href="#categories">
+      ☰
+      <span>
+        Categories
+      </span>
+    </a>
+
+    <a href="#best-selling">
+      🛍️
+      <span>
+        Shop
+      </span>
+    </a>
+
+    <a href="#">
+      👤
+      <span>
+        Account
+      </span>
+    </a>
+
+  </nav>
+
+
+  <!-- =======================================================
+       TOAST
+       ======================================================= -->
+
+  <div
+    class="toast"
+    id="toast"
+  >
+    Done
+  </div>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+       ======================================================= -->
+
+  <script>
+
+    /* =======================================================
+       CART
+       ======================================================= */
+
+    let cartCount = 0;
+
+    function addToCart(name, price) {
+
+      cartCount++;
+
+      document.getElementById("cartCount")
+        .textContent = cartCount;
+
+      showToast(
+        name + " added to cart"
+      );
+
+    }
+
+
+    /* =======================================================
+       WISHLIST
+       ======================================================= */
+
+    function toggleWishlist(button) {
+
+      if (
+        button.textContent.trim() === "♡"
+      ) {
+
+        button.textContent = "♥";
+
+        button.style.color = "#ef4444";
+
+        showToast(
+          "Added to wishlist"
+        );
+
+      } else {
+
+        button.textContent = "♡";
+
+        button.style.color = "";
+
+        showToast(
+          "Removed from wishlist"
+        );
+
+      }
+
+    }
+
+
+    /* =======================================================
+       SEARCH
+       ======================================================= */
+
+    function performSearch() {
+
+      const input =
+        document
+          .getElementById("searchInput")
+          .value
+          .trim()
+          .toLowerCase();
+
+      if (!input) {
+
+        showToast(
+          "Please enter a product name"
+        );
+
+        return;
+      }
+
+      const products =
+        document.querySelectorAll(
+          ".product-card"
+        );
+
+      let found = false;
+
+      products.forEach(
+        function(product) {
+
+          const name =
+            (
+              product.dataset.name || ""
+            ).toLowerCase();
+
+          if (
+            name.includes(input)
+          ) {
+
+            product.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+
+            product.style.outline =
+              "3px solid rgba(11,143,85,.25)";
+
+            setTimeout(
+              function() {
+
+                product.style.outline = "";
+
+              },
+              1800
+            );
+
+            found = true;
+
+          }
+
+        }
+      );
+
+      if (!found) {
+
+        showToast(
+          "Product not found in this demo"
+        );
+
+      }
+
+    }
+
+
+    /* =======================================================
+       ENTER KEY SEARCH
+       ======================================================= */
+
+    document
+      .getElementById("searchInput")
+      .addEventListener(
+        "keydown",
+        function(event) {
+
+          if (
+            event.key === "Enter"
+          ) {
+
+            performSearch();
+
+          }
+
+        }
+      );
+
+
+    /* =======================================================
+       SCROLL
+       ======================================================= */
+
+    function scrollToSection(id) {
+
+      const element =
+        document.getElementById(id);
+
+      if (!element) return;
+
+      element.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* =======================================================
+       TOAST
+       ======================================================= */
+
+    let toastTimer;
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+
+      toastTimer =
+        setTimeout(
+          function() {
+
+            toast.classList.remove("show");
+
+          },
+          2200
+        );
+
+    }
+
+
+    /* =======================================================
+       NEWSLETTER
+       ======================================================= */
+
+    function subscribeUser(event) {
+
+      event.preventDefault();
+
+      const email =
+        document
+          .getElementById("emailInput")
+          .value
+          .trim();
+
+      if (!email) return;
+
+      showToast(
+        "Thanks! You're subscribed."
+      );
+
+      event.target.reset();
+
+    }
+
+
+    /* =======================================================
+       NAV ACTIVE STATE
+       ======================================================= */
+
+    const navLinks =
+      document.querySelectorAll(
+        ".nav-links a"
+      );
+
+    navLinks.forEach(
+      function(link) {
+
+        link.addEventListener(
+          "click",
+          function() {
+
+            navLinks.forEach(
+              function(item) {
+
+                item.classList.remove(
+                  "active"
+                );
+
+              }
+            );
+
+            link.classList.add(
+              "active"
+            );
+
+          }
+        );
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
