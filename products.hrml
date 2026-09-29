@@ -1,0 +1,3043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Family Bazar - Groceries, food, household essentials and daily products."
+  >
+
+  <meta
+    name="theme-color"
+    content="#0f8f4f"
+  >
+
+  <title>Products | Family Bazar</title>
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <style>
+    /* =====================================================
+       PRODUCTS PAGE ONLY
+       ===================================================== */
+
+    .products-page {
+      padding: 28px 0 70px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px;
+
+      margin-bottom: 22px;
+
+      color: #748078;
+      font-size: 12px;
+    }
+
+    .breadcrumb a {
+      color: #0f8f4f;
+      font-weight: 600;
+    }
+
+    .products-page-header {
+      background: #ffffff;
+
+      border: 1px solid #e4eae5;
+      border-radius: 16px;
+
+      padding: 25px 28px;
+
+      margin-bottom: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+    .products-page-header h1 {
+      color: #17221b;
+
+      font-size: 30px;
+      line-height: 1.15;
+
+      margin-bottom: 5px;
+    }
+
+    .products-page-header p {
+      color: #6f7b73;
+      font-size: 13px;
+    }
+
+    .products-layout {
+      display: grid;
+
+      grid-template-columns: 235px minmax(0, 1fr);
+
+      gap: 20px;
+
+      align-items: start;
+    }
+
+    .filter-sidebar {
+      background: #ffffff;
+
+      border: 1px solid #e4eae5;
+      border-radius: 14px;
+
+      padding: 18px;
+
+      position: sticky;
+      top: 100px;
+    }
+
+    .filter-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding-bottom: 14px;
+
+      border-bottom: 1px solid #edf0ed;
+
+      margin-bottom: 15px;
+    }
+
+    .filter-title h2 {
+      color: #17221b;
+      font-size: 16px;
+    }
+
+    .clear-filter {
+      border: 0;
+      background: transparent;
+
+      color: #e53935;
+
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .filter-group {
+      margin-bottom: 22px;
+    }
+
+    .filter-group h3 {
+      color: #28332c;
+
+      font-size: 12px;
+
+      margin-bottom: 10px;
+    }
+
+    .category-filter-list {
+      display: flex;
+      flex-direction: column;
+
+      gap: 4px;
+    }
+
+    .category-filter {
+      width: 100%;
+
+      min-height: 37px;
+
+      border: 0;
+
+      background: transparent;
+
+      border-radius: 7px;
+
+      padding: 0 9px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      text-align: left;
+
+      color: #59645d;
+
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .category-filter:hover,
+    .category-filter.active {
+      background: #e9f8ef;
+      color: #0f8f4f;
+    }
+
+    .category-filter span:last-child {
+      min-width: 20px;
+
+      text-align: right;
+
+      color: #9aa49e;
+
+      font-size: 10px;
+    }
+
+    .filter-check {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      color: #59645d;
+
+      font-size: 11px;
+
+      margin-bottom: 9px;
+
+      cursor: pointer;
+    }
+
+    .filter-check input {
+      accent-color: #0f8f4f;
+    }
+
+    .price-inputs {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 7px;
+    }
+
+    .price-input {
+      width: 100%;
+
+      height: 36px;
+
+      border: 1px solid #e4eae5;
+
+      border-radius: 6px;
+
+      padding: 0 8px;
+
+      outline: 0;
+
+      font-size: 11px;
+    }
+
+    .price-input:focus {
+      border-color: #0f8f4f;
+    }
+
+    .apply-price {
+      width: 100%;
+
+      height: 35px;
+
+      margin-top: 8px;
+
+      border: 0;
+
+      border-radius: 6px;
+
+      background: #0f8f4f;
+
+      color: #fff;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .apply-price:hover {
+      background: #08733d;
+    }
+
+    .products-content {
+      min-width: 0;
+    }
+
+    .products-toolbar {
+      min-height: 52px;
+
+      background: #ffffff;
+
+      border: 1px solid #e4eae5;
+
+      border-radius: 10px;
+
+      padding: 8px 12px;
+
+      margin-bottom: 15px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+    }
+
+    .result-count {
+      color: #6f7b73;
+
+      font-size: 12px;
+    }
+
+    .result-count strong {
+      color: #17221b;
+    }
+
+    .sort-area {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+    }
+
+    .sort-area label {
+      color: #6f7b73;
+
+      font-size: 11px;
+    }
+
+    .sort-select {
+      min-width: 160px;
+
+      height: 36px;
+
+      border: 1px solid #e4eae5;
+
+      border-radius: 6px;
+
+      background: #fff;
+
+      color: #28332c;
+
+      padding: 0 9px;
+
+      outline: 0;
+
+      font-size: 11px;
+
+      cursor: pointer;
+    }
+
+    .sort-select:focus {
+      border-color: #0f8f4f;
+    }
+
+    .products-page-grid {
+      display: grid;
+
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+
+      gap: 15px;
+    }
+
+    .products-page-grid .product-card {
+      min-width: 0;
+    }
+
+    .mobile-filter-btn {
+      display: none;
+
+      width: 100%;
+
+      height: 42px;
+
+      margin-bottom: 12px;
+
+      border: 1px solid #dbe7de;
+
+      border-radius: 8px;
+
+      background: #ffffff;
+
+      color: #0f8f4f;
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .no-products {
+      grid-column: 1 / -1;
+
+      min-height: 300px;
+
+      background: #ffffff;
+
+      border: 1px solid #e4eae5;
+
+      border-radius: 14px;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 30px;
+    }
+
+    .no-products-icon {
+      font-size: 45px;
+      margin-bottom: 10px;
+    }
+
+    .no-products h2 {
+      color: #17221b;
+
+      font-size: 19px;
+
+      margin-bottom: 5px;
+    }
+
+    .no-products p {
+      color: #6f7b73;
+
+      font-size: 12px;
+
+      margin-bottom: 15px;
+    }
+
+    /* =====================================================
+       PRODUCT DETAILS MODAL
+       ===================================================== */
+
+    .quick-view-modal {
+      width: min(850px, 100%);
+    }
+
+    .quick-view-grid {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 25px;
+    }
+
+    .quick-view-image {
+      aspect-ratio: 1 / 1;
+
+      background: #f4f7f4;
+
+      border-radius: 12px;
+
+      overflow: hidden;
+    }
+
+    .quick-view-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .quick-view-info {
+      padding: 10px 0;
+    }
+
+    .quick-view-brand {
+      color: #0f8f4f;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+    }
+
+    .quick-view-info h2 {
+      color: #17221b;
+
+      font-size: 25px;
+
+      line-height: 1.2;
+
+      margin: 8px 0 12px;
+    }
+
+    .quick-view-price {
+      display: flex;
+      align-items: center;
+
+      gap: 9px;
+
+      margin-bottom: 13px;
+    }
+
+    .quick-view-price strong {
+      color: #08733d;
+
+      font-size: 24px;
+    }
+
+    .quick-view-price del {
+      color: #9ca59f;
+
+      font-size: 12px;
+    }
+
+    .quick-view-description {
+      color: #6f7b73;
+
+      font-size: 13px;
+
+      line-height: 1.7;
+
+      margin-bottom: 20px;
+    }
+
+    .quick-view-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1200px) {
+
+      .products-page-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+    }
+
+    @media (max-width: 992px) {
+
+      .products-layout {
+        grid-template-columns: 200px minmax(0, 1fr);
+      }
+
+      .products-page-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 768px) {
+
+      .products-page {
+        padding-top: 18px;
+      }
+
+      .products-page-header {
+        padding: 20px;
+
+        display: block;
+      }
+
+      .products-page-header h1 {
+        font-size: 25px;
+      }
+
+      .products-page-header p {
+        margin-top: 4px;
+      }
+
+      .mobile-filter-btn {
+        display: block;
+      }
+
+      .products-layout {
+        display: block;
+      }
+
+      .filter-sidebar {
+        display: none;
+
+        position: static;
+
+        margin-bottom: 12px;
+      }
+
+      .filter-sidebar.mobile-open {
+        display: block;
+      }
+
+      .products-toolbar {
+        padding: 8px;
+
+        flex-wrap: wrap;
+      }
+
+      .sort-area {
+        width: 100%;
+      }
+
+      .sort-select {
+        flex: 1;
+      }
+
+      .quick-view-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 576px) {
+
+      .products-page-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+      }
+
+      .products-toolbar {
+        display: block;
+      }
+
+      .result-count {
+        display: block;
+
+        margin-bottom: 8px;
+      }
+
+      .sort-area {
+        width: 100%;
+      }
+
+      .sort-area label {
+        display: none;
+      }
+
+      .sort-select {
+        width: 100%;
+      }
+
+      .breadcrumb {
+        font-size: 10px;
+      }
+
+      .quick-view-info h2 {
+        font-size: 20px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       OFFER BAR
+       ===================================================== -->
+
+  <div class="offer-bar">
+
+    <div class="offer-bar-inner">
+
+      <span>🎉 Special Offer</span>
+
+      <strong>
+        Save more on your family shopping
+      </strong>
+
+      <span class="offer-code">
+        FAMILY10
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header class="site-header">
+
+    <div class="container">
+
+      <div class="header-main">
+
+        <a
+          href="index.html"
+          class="logo"
+          aria-label="Family Bazar Home"
+        >
+
+          <img
+            class="family-logo"
+            src="https://raw.githubusercontent.com/shahneilkhan/familybazar.github.io/main/Frame%20399.jpg"
+            alt="Family Bazar"
+          >
+
+        </a>
+
+
+        <div class="search-area">
+
+          <form
+            class="search-form"
+            id="productSearchForm"
+          >
+
+            <input
+              id="productSearch"
+              type="search"
+              placeholder="Search products, brands and categories..."
+              autocomplete="off"
+            >
+
+            <button
+              type="submit"
+              aria-label="Search"
+            >
+              🔍
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <div class="header-actions">
+
+          <button
+            type="button"
+            class="header-action"
+            onclick="window.location.href='account.html'"
+          >
+
+            <span class="icon">👤</span>
+            <span>Account</span>
+
+          </button>
+
+
+          <button
+            type="button"
+            class="header-action"
+            data-open-cart
+          >
+
+            <span class="icon">🛒</span>
+            <span>Cart</span>
+
+            <span
+              class="action-badge cart-count"
+              id="cartCount"
+            >
+              0
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         NAV
+         =================================================== -->
+
+    <nav class="main-nav">
+
+      <div class="container">
+
+        <div class="nav-inner">
+
+          <div class="nav-menu">
+
+            <a href="index.html">
+              Home
+            </a>
+
+            <a
+              href="products.html"
+              class="active"
+            >
+              All Products
+            </a>
+
+            <a href="products.html?category=groceries">
+              Groceries
+            </a>
+
+            <a href="products.html?category=rice">
+              Rice & Grains
+            </a>
+
+            <a href="products.html?category=oil">
+              Oil & Ghee
+            </a>
+
+            <a href="products.html?category=spices">
+              Spices
+            </a>
+
+            <a href="products.html?category=beverages">
+              Beverages
+            </a>
+
+            <a href="products.html?category=snacks">
+              Snacks
+            </a>
+
+          </div>
+
+          <div class="nav-offer">
+            ⚡ Fast Delivery
+          </div>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =====================================================
+       MAIN
+       ===================================================== -->
+
+  <main>
+
+    <section class="products-page">
+
+      <div class="container">
+
+
+        <!-- BREADCRUMB -->
+
+        <div class="breadcrumb">
+
+          <a href="index.html">
+            Home
+          </a>
+
+          <span>›</span>
+
+          <span>
+            Products
+          </span>
+
+        </div>
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="products-page-header">
+
+          <div>
+
+            <h1>
+              All Products
+            </h1>
+
+            <p>
+              Shop groceries, food, household essentials
+              and everyday family needs.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- MOBILE FILTER BUTTON -->
+
+        <button
+          type="button"
+          class="mobile-filter-btn"
+          id="mobileFilterBtn"
+        >
+          ☰ &nbsp; Filter Products
+        </button>
+
+
+        <!-- PRODUCTS LAYOUT -->
+
+        <div class="products-layout">
+
+
+          <!-- =================================================
+               SIDEBAR
+               ================================================= -->
+
+          <aside
+            class="filter-sidebar"
+            id="filterSidebar"
+          >
+
+            <div class="filter-title">
+
+              <h2>
+                Filters
+              </h2>
+
+              <button
+                type="button"
+                class="clear-filter"
+                id="clearFilters"
+              >
+                Clear All
+              </button>
+
+            </div>
+
+
+            <!-- CATEGORY -->
+
+            <div class="filter-group">
+
+              <h3>
+                Category
+              </h3>
+
+              <div class="category-filter-list">
+
+                <button
+                  type="button"
+                  class="category-filter active"
+                  data-filter-category="all"
+                >
+                  <span>
+                    All Products
+                  </span>
+
+                  <span>
+                    10
+                  </span>
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="category-filter"
+                  data-filter-category="groceries"
+                >
+                  <span>
+                    Groceries
+                  </span>
+
+                  <span>
+                    3
+                  </span>
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="category-filter"
+                  data-filter-category="rice"
+                >
+                  <span>
+                    Rice & Grains
+                  </span>
+
+                  <span>
+                    2
+                  </span>
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="category-filter"
+                  data-filter-category="oil"
+                >
+                  <span>
+                    Oil & Ghee
+                  </span>
+
+                  <span>
+                    1
+                  </span>
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="category-filter"
+                  data-filter-category="spices"
+                >
+                  <span>
+                    Spices
+                  </span>
+
+                  <span>
+                    1
+                  </span>
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="category-filter"
+                  data-filter-category="beverages"
+                >
+                  <span>
+                    Beverages
+                  </span>
+
+                  <span>
+                    1
+                  </span>
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="category-filter"
+                  data-filter-category="snacks"
+                >
+                  <span>
+                    Snacks
+                  </span>
+
+                  <span>
+                    1
+                  </span>
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="category-filter"
+                  data-filter-category="dairy"
+                >
+                  <span>
+                    Dairy
+                  </span>
+
+                  <span>
+                    1
+                  </span>
+
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <!-- PRICE -->
+
+            <div class="filter-group">
+
+              <h3>
+                Price Range
+              </h3>
+
+              <div class="price-inputs">
+
+                <input
+                  type="number"
+                  id="minPrice"
+                  class="price-input"
+                  placeholder="Min ৳"
+                  min="0"
+                >
+
+                <input
+                  type="number"
+                  id="maxPrice"
+                  class="price-input"
+                  placeholder="Max ৳"
+                  min="0"
+                >
+
+              </div>
+
+              <button
+                type="button"
+                class="apply-price"
+                id="applyPrice"
+              >
+                Apply Price
+              </button>
+
+            </div>
+
+
+            <!-- AVAILABILITY -->
+
+            <div class="filter-group">
+
+              <h3>
+                Availability
+              </h3>
+
+              <label class="filter-check">
+
+                <input
+                  type="checkbox"
+                  id="inStockFilter"
+                >
+
+                <span>
+                  In Stock
+                </span>
+
+              </label>
+
+
+              <label class="filter-check">
+
+                <input
+                  type="checkbox"
+                  id="discountFilter"
+                >
+
+                <span>
+                  On Sale
+                </span>
+
+              </label>
+
+            </div>
+
+          </aside>
+
+
+          <!-- =================================================
+               PRODUCTS CONTENT
+               ================================================= -->
+
+          <div class="products-content">
+
+
+            <!-- TOOLBAR -->
+
+            <div class="products-toolbar">
+
+              <div class="result-count">
+
+                Showing
+                <strong id="resultCount">
+                  10
+                </strong>
+                products
+
+              </div>
+
+
+              <div class="sort-area">
+
+                <label for="sortProducts">
+                  Sort by:
+                </label>
+
+                <select
+                  id="sortProducts"
+                  class="sort-select"
+                >
+
+                  <option value="default">
+                    Featured
+                  </option>
+
+                  <option value="price-low">
+                    Price: Low to High
+                  </option>
+
+                  <option value="price-high">
+                    Price: High to Low
+                  </option>
+
+                  <option value="name-az">
+                    Name: A to Z
+                  </option>
+
+                  <option value="name-za">
+                    Name: Z to A
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PRODUCT GRID
+                 ================================================= -->
+
+            <div
+              class="products-page-grid product-grid"
+              id="productsGrid"
+            >
+
+
+              <!-- PRODUCT 01 -->
+
+              <article
+                class="product-card"
+                data-product-id="fb001"
+                data-category="rice"
+                data-price="850"
+                data-stock="true"
+              >
+
+                <div class="product-image-wrap">
+
+                  <span class="product-badge">
+                    8% OFF
+                  </span>
+
+                  <button
+                    type="button"
+                    class="wishlist-btn"
+                    aria-label="Add to wishlist"
+                  >
+                    <span class="wishlist-icon">
+                      ♡
+                    </span>
+                  </button>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=700&q=85"
+                    alt="Premium Miniket Rice"
+                    loading="lazy"
+                  >
+
+                </div>
+
+
+                <div class="product-content">
+
+                  <div class="product-brand">
+                    Family Choice
+                  </div>
+
+                  <h2 class="product-title">
+                    Premium Miniket Rice 25 KG
+                  </h2>
+
+                  <div class="product-rating">
+                    <span class="stars">
+                      ★★★★★
+                    </span>
+
+                    <span class="rating-count">
+                      (124)
+                    </span>
+                  </div>
+
+                  <div class="product-price-row">
+
+                    <span class="product-price">
+                      ৳850
+                    </span>
+
+                    <span class="product-old-price">
+                      ৳920
+                    </span>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    class="add-cart-btn"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+
+              </article>
+
+
+              <!-- PRODUCT 02 -->
+
+              <article
+                class="product-card"
+                data-product-id="fb002"
+                data-category="groceries"
+                data-price="145"
+                data-stock="true"
+              >
+
+                <div class="product-image-wrap">
+
+                  <span class="product-badge">
+                    12% OFF
+                  </span>
+
+                  <button
+                    type="button"
+                    class="wishlist-btn"
+                    aria-label="Add to wishlist"
+                  >
+                    <span class="wishlist-icon">
+                      ♡
+                    </span>
+                  </button>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=85"
+                    alt="Premium Atta"
+                    loading="lazy"
+                  >
+
+                </div>
+
+
+                <div class="product-content">
+
+                  <div class="product-brand">
+                    Fresh Daily
+                  </div>
+
+                  <h2 class="product-title">
+                    Premium Atta 2 KG
+                  </h2>
+
+                  <div class="product-rating">
+
+                    <span class="stars">
+                      ★★★★★
+                    </span>
+
+                    <span class="rating-count">
+                      (87)
+                    </span>
+
+                  </div>
+
+                  <div class="product-price-row">
+
+                    <span class="product-price">
+                      ৳145
+                    </span>
+
+                    <span class="product-old-price">
+                      ৳165
+                    </span>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    class="add-cart-btn"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+
+              </article>
+
+
+              <!-- PRODUCT 03 -->
+
+              <article
+                class="product-card"
+                data-product-id="fb003"
+                data-category="groceries"
+                data-price="399"
+                data-stock="true"
+              >
+
+                <div class="product-image-wrap">
+
+                  <span class="product-badge">
+                    11% OFF
+                  </span>
+
+                  <button
+                    type="button"
+                    class="wishlist-btn"
+                    aria-label="Add to wishlist"
+                  >
+                    <span class="wishlist-icon">
+                      ♡
+                    </span>
+                  </button>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=700&q=85"
+                    alt="Fresh Vegetable Basket"
+                    loading="lazy"
+                  >
+
+                </div>
+
+
+                <div class="product-content">
+
+                  <div class="product-brand">
+                    Fresh Farm
+                  </div>
+
+                  <h2 class="product-title">
+                    Fresh Vegetable Basket
+                  </h2>
+
+                  <div class="product-rating">
+
+                    <span class="stars">
+                      ★★★★★
+                    </span>
+
+                    <span class="rating-count">
+                      (203)
+                    </span>
+
+                  </div>
+
+                  <div class="product-price-row">
+
+                    <span class="product-price">
+                      ৳399
+                    </span>
+
+                    <span class="product-old-price">
+                      ৳450
+                    </span>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    class="add-cart-btn"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+
+              </article>
+
+
+              <!-- PRODUCT 04 -->
+
+              <article
+                class="product-card"
+                data-product-id="fb004"
+                data-category="oil"
+                data-price="185"
+                data-stock="true"
+              >
+
+                <div class="product-image-wrap">
+
+                  <span class="product-badge">
+                    10% OFF
+                  </span>
+
+                  <button
+                    type="button"
+                    class="wishlist-btn"
+                    aria-label="Add to wishlist"
+                  >
+                    <span class="wishlist-icon">
+                      ♡
+                    </span>
+                  </button>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=700&q=85"
+                    alt="Premium Soybean Oil"
+                    loading="lazy"
+                  >
+
+                </div>
+
+
+                <div class="product-content">
+
+                  <div class="product-brand">
+                    Family Choice
+                  </div>
+
+                  <h2 class="product-title">
+                    Premium Soybean Oil 1 Liter
+                  </h2>
+
+                  <div class="product-rating">
+
+                    <span class="stars">
+                      ★★★★☆
+                    </span>
+
+                    <span class="rating-count">
+                      (96)
+                    </span>
+
+                  </div>
+
+                  <div class="product-price-row">
+
+                    <span class="product-price">
+                      ৳185
+                    </span>
+
+                    <span class="product-old-price">
+                      ৳205
+                    </span>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    class="add-cart-btn"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+
+              </article>
+
+
+              <!-- PRODUCT 05 -->
+
+              <article
+                class="product-card"
+                data-product-id="fb005"
+                data-category="dairy"
+                data-price="95"
+                data-stock="true"
+              >
+
+                <div class="product-image-wrap">
+
+                  <button
+                    type="button"
+                    class="wishlist-btn"
+                    aria-label="Add to wishlist"
+                  >
+                    <span class="wishlist-icon">
+                      ♡
+                    </span>
+                  </button>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=700&q=85"
+                    alt="Fresh Full Cream Milk"
+                    loading="lazy"
+                  >
+
+                </div>
+
+
+                <div class="product-content">
+
+                  <div class="product-brand">
+                    Fresh Dairy
+                  </div>
+
+                  <h2 class="product-title">
+                    Fresh Full Cream Milk 1 Liter
+                  </h2>
+
+                  <div class="product-rating">
+
+                    <span class="stars">
+                      ★★★★★
+                    </span>
+
+                    <span class="rating-count">
+                      (152)
+                    </span>
+
+                  </div>
+
+                  <div class="product-price-row">
+
+                    <span class="product-price">
+                      ৳95
+                    </span>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    class="add-cart-btn"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+
+              </article>
+
+
+              <!-- PRODUCT 06 -->
+
+              <article
+                class="product-card"
+                data-product-id="fb006"
+                data-category="spices"
+                data-price="120"
+                data-stock="true"
+              >
+
+                <div class="product-image-wrap">
+
+                  <span class="product-badge">
+                    15% OFF
+                  </span>
+
+                  <button
+                    type="button"
+                    class="wishlist-btn"
+                    aria-label="Add to wishlist"
+                  >
+                    <span class="wishlist-icon">
+                      ♡
+                    </span>
+                  </button>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=700&q=85"
+                    alt="Premium Mixed Spices"
+                    loading="lazy"
+                  >
+
+                </div>
+
+
+                <div class="product-content">
+
+                  <div class="product-brand">
+                    Spice House
+                  </div>
+
+                  <h2 class="product-title">
+                    Premium Mixed Spices 200g
+                  </h2>
+
+                  <div class="product-rating">
+
+                    <span class="stars">
+                      ★★★★★
+                    </span>
+
+                    <span class="rating-count">
+                      (74)
+                    </span>
+
+                  </div>
+
+                  <div class="product-price-row">
+
+                    <span class="product-price">
+                      ৳120
+                    </span>
+
+                    <span class="product-old-price">
+                      ৳140
+                    </span>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    class="add-cart-btn"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+
+              </article>
+
+
+              <!-- PRODUCT 07 -->
+
+              <article
+                class="product-card"
+                data-product-id="fb007"
+                data-category="groceries"
+                data-price="150"
+                data-stock="true"
+              >
+
+                <div class="product-image-wrap">
+
+                  <span class="product-badge">
+                    10% OFF
+                  </span>
+
+                  <button
+                    type="button"
+                    class="wishlist-btn"
+                    aria-label="Add to wishlist"
+                  >
+                    <span class="wishlist-icon">
+                      ♡
+                    </span>
+                  </button>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1551462147-ff29053bfc14?auto=format&fit=crop&w=700&q=85"
+                    alt="Premium Pasta"
+                    loading="lazy"
+                  >
+
+                </div>
+
+
+                <div class="product-content">
+
+                  <div class="product-brand">
+                    Daily Choice
+                  </div>
+
+                  <h2 class="product-title">
+                    Premium Pasta 500g
+                  </h2>
+
+                  <div class="product-rating">
+
+                    <span class="stars">
+                      ★★★★☆
+                    </span>
+
+                    <span class="rating-count">
+                      (61)
+                    </span>
+
+                  </div>
+
+                  <div class="product-price-row">
+
+                    <span class="product-price">
+                      ৳150
+                    </span>
+
+                    <span class="product-old-price">
+                      ৳165
+                    </span>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    class="add-cart-btn"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+
+              </article>
+
+
+              <!-- PRODUCT 08 -->
+
+              <article
+                class="product-card"
+                data-product-id="fb008"
+                data-category="snacks"
+                data-price="180"
+                data-stock="true"
+              >
+
+                <div class="product-image-wrap">
+
+                  <span class="product-badge">
+                    10% OFF
+                  </span>
+
+                  <button
+                    type="button"
+                    class="wishlist-btn"
+                    aria-label="Add to wishlist"
+                  >
+                    <span class="wishlist-icon">
+                      ♡
+                    </span>
+                  </button>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=85"
+                    alt="Family Cookies Pack"
+                    loading="lazy"
+                  >
+
+                </div>
+
+
+                <div class="product-content">
+
+                  <div class="product-brand">
+                    Family Snacks
+                  </div>
+
+                  <h2 class="product-title">
+                    Family Cookies Pack
+                  </h2>
+
+                  <div class="product-rating">
+
+                    <span class="stars">
+                      ★★★★★
+                    </span>
+
+                    <span class="rating-count">
+                      (115)
+                    </span>
+
+                  </div>
+
+                  <div class="product-price-row">
+
+                    <span class="product-price">
+                      ৳180
+                    </span>
+
+                    <span class="product-old-price">
+                      ৳200
+                    </span>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    class="add-cart-btn"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+
+              </article>
+
+
+              <!-- PRODUCT 09 -->
+
+              <article
+                class="product-card"
+                data-product-id="fb009"
+                data-category="groceries"
+                data-price="499"
+                data-stock="true"
+              >
+
+                <div class="product-image-wrap">
+
+                  <span class="product-badge">
+                    15% OFF
+                  </span>
+
+                  <button
+                    type="button"
+                    class="wishlist-btn"
+                    aria-label="Add to wishlist"
+                  >
+                    <span class="wishlist-icon">
+                      ♡
+                    </span>
+                  </button>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=700&q=85"
+                    alt="Kitchen Essentials Pack"
+                    loading="lazy"
+                  >
+
+                </div>
+
+
+                <div class="product-content">
+
+                  <div class="product-brand">
+                    Home Essentials
+                  </div>
+
+                  <h2 class="product-title">
+                    Kitchen Essentials Pack
+                  </h2>
+
+                  <div class="product-rating">
+
+                    <span class="stars">
+                      ★★★★★
+                    </span>
+
+                    <span class="rating-count">
+                      (48)
+                    </span>
+
+                  </div>
+
+                  <div class="product-price-row">
+
+                    <span class="product-price">
+                      ৳499
+                    </span>
+
+                    <span class="product-old-price">
+                      ৳590
+                    </span>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    class="add-cart-btn"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+
+              </article>
+
+
+              <!-- PRODUCT 10 -->
+
+              <article
+                class="product-card"
+                data-product-id="fb010"
+                data-category="beverages"
+                data-price="350"
+                data-stock="true"
+              >
+
+                <div class="product-image-wrap">
+
+                  <span class="product-badge">
+                    12% OFF
+                  </span>
+
+                  <button
+                    type="button"
+                    class="wishlist-btn"
+                    aria-label="Add to wishlist"
+                  >
+                    <span class="wishlist-icon">
+                      ♡
+                    </span>
+                  </button>
+
+                  <img
+                    src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=700&q=85"
+                    alt="Pure Natural Honey"
+                    loading="lazy"
+                  >
+
+                </div>
+
+
+                <div class="product-content">
+
+                  <div class="product-brand">
+                    Natural Foods
+                  </div>
+
+                  <h2 class="product-title">
+                    Pure Natural Honey 500g
+                  </h2>
+
+                  <div class="product-rating">
+
+                    <span class="stars">
+                      ★★★★★
+                    </span>
+
+                    <span class="rating-count">
+                      (178)
+                    </span>
+
+                  </div>
+
+                  <div class="product-price-row">
+
+                    <span class="product-price">
+                      ৳350
+                    </span>
+
+                    <span class="product-old-price">
+                      ৳399
+                    </span>
+
+                  </div>
+
+                  <button
+                    type="button"
+                    class="add-cart-btn"
+                  >
+                    Add to Cart
+                  </button>
+
+                </div>
+
+              </article>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       CART DRAWER
+       ===================================================== -->
+
+  <div
+    class="cart-drawer-overlay"
+    id="cartOverlay"
+  ></div>
+
+
+  <aside
+    class="cart-drawer"
+    id="cartDrawer"
+    aria-label="Shopping Cart"
+  >
+
+    <div class="cart-drawer-header">
+
+      <h2>
+        Your Cart
+      </h2>
+
+      <button
+        type="button"
+        class="cart-close"
+        data-close-cart
+        aria-label="Close cart"
+      >
+        ✕
+      </button>
+
+    </div>
+
+
+    <div class="cart-items">
+
+      <div class="cart-empty">
+
+        <div class="cart-empty-icon">
+          🛒
+        </div>
+
+        <h3>
+          Your cart is empty
+        </h3>
+
+        <p>
+          Add some products to continue shopping.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="cart-footer">
+
+      <div class="cart-summary">
+
+        <span>
+          Subtotal
+        </span>
+
+        <strong
+          class="cart-subtotal"
+          id="cartSubtotal"
+        >
+          ৳0
+        </strong>
+
+      </div>
+
+      <button
+        type="button"
+        class="checkout-btn"
+      >
+        Proceed to Checkout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================================
+       TOAST
+       ===================================================== -->
+
+  <div
+    class="toast-container"
+    aria-live="polite"
+  ></div>
+
+
+  <!-- =====================================================
+       MOBILE BOTTOM NAV
+       ===================================================== -->
+
+  <nav class="mobile-bottom-nav">
+
+    <div class="mobile-bottom-nav-inner">
+
+      <a
+        href="index.html"
+        class="mobile-bottom-item"
+      >
+
+        <span class="icon">
+          🏠
+        </span>
+
+        <span>
+          Home
+        </span>
+
+      </a>
+
+
+      <a
+        href="products.html"
+        class="mobile-bottom-item active"
+      >
+
+        <span class="icon">
+          🛍️
+        </span>
+
+        <span>
+          Shop
+        </span>
+
+      </a>
+
+
+      <button
+        type="button"
+        class="mobile-bottom-item"
+        data-open-cart
+      >
+
+        <span class="icon">
+          🛒
+        </span>
+
+        <span>
+          Cart
+        </span>
+
+        <span class="mobile-badge cart-count">
+          0
+        </span>
+
+      </button>
+
+
+      <a
+        href="account.html"
+        class="mobile-bottom-item"
+      >
+
+        <span class="icon">
+          👤
+        </span>
+
+        <span>
+          Account
+        </span>
+
+      </a>
+
+
+      <a
+        href="wishlist.html"
+        class="mobile-bottom-item"
+      >
+
+        <span class="icon">
+          ♡
+        </span>
+
+        <span>
+          Wishlist
+        </span>
+
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script src="script.js"></script>
+
+
+  <!-- =====================================================
+       PRODUCTS PAGE JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+    "use strict";
+
+
+    /* =====================================================
+       PRODUCTS PAGE STATE
+       ===================================================== */
+
+    let pageCategory = "all";
+
+    let pageSearch = "";
+
+    let minPrice = 0;
+
+    let maxPrice = Infinity;
+
+    let onlyStock = false;
+
+    let onlyDiscount = false;
+
+    let sortMode = "default";
+
+
+    /* =====================================================
+       DOM
+       ===================================================== */
+
+    const productsGrid =
+      document.getElementById(
+        "productsGrid"
+      );
+
+    const resultCount =
+      document.getElementById(
+        "resultCount"
+      );
+
+    const searchForm =
+      document.getElementById(
+        "productSearchForm"
+      );
+
+    const searchInput =
+      document.getElementById(
+        "productSearch"
+      );
+
+    const sortProducts =
+      document.getElementById(
+        "sortProducts"
+      );
+
+    const minPriceInput =
+      document.getElementById(
+        "minPrice"
+      );
+
+    const maxPriceInput =
+      document.getElementById(
+        "maxPrice"
+      );
+
+    const inStockFilter =
+      document.getElementById(
+        "inStockFilter"
+      );
+
+    const discountFilter =
+      document.getElementById(
+        "discountFilter"
+      );
+
+    const clearFilters =
+      document.getElementById(
+        "clearFilters"
+      );
+
+    const mobileFilterBtn =
+      document.getElementById(
+        "mobileFilterBtn"
+      );
+
+    const filterSidebar =
+      document.getElementById(
+        "filterSidebar"
+      );
+
+
+    /* =====================================================
+       GET URL PARAMETERS
+       ===================================================== */
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    if (
+      params.get("category")
+    ) {
+
+      pageCategory =
+        normalizeCategory(
+          params.get("category")
+        );
+
+    }
+
+
+    if (
+      params.get("search")
+    ) {
+
+      pageSearch =
+        params.get("search")
+          .trim()
+          .toLowerCase();
+
+      searchInput.value =
+        params.get("search");
+
+    }
+
+
+    /* =====================================================
+       CATEGORY NORMALIZER
+       ===================================================== */
+
+    function normalizeCategory(
+      category
+    ) {
+
+      const value =
+        String(category || "")
+          .trim()
+          .toLowerCase();
+
+      const aliases = {
+
+        "rice & grains": "rice",
+        "rice-grains": "rice",
+        "oil & ghee": "oil",
+        "oil-ghee": "oil",
+        "personal care": "personal",
+        "all products": "all"
+
+      };
+
+      return (
+        aliases[value] ||
+        value ||
+        "all"
+      );
+
+    }
+
+
+    /* =====================================================
+       CATEGORY BUTTONS
+       ===================================================== */
+
+    document
+      .querySelectorAll(
+        ".category-filter"
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            pageCategory =
+              normalizeCategory(
+                button.dataset.filterCategory
+              );
+
+            updateCategoryButtons();
+
+            applyProductFilters();
+
+          }
+        );
+
+      });
+
+
+    function updateCategoryButtons() {
+
+      document
+        .querySelectorAll(
+          ".category-filter"
+        )
+        .forEach(button => {
+
+          const category =
+            normalizeCategory(
+              button.dataset.filterCategory
+            );
+
+          button.classList.toggle(
+            "active",
+            category === pageCategory
+          );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       SEARCH
+       ===================================================== */
+
+    searchForm.addEventListener(
+      "submit",
+      event => {
+
+        event.preventDefault();
+
+        pageSearch =
+          searchInput.value
+            .trim()
+            .toLowerCase();
+
+        applyProductFilters();
+
+      }
+    );
+
+
+    /* =====================================================
+       LIVE SEARCH
+       ===================================================== */
+
+    searchInput.addEventListener(
+      "input",
+      () => {
+
+        pageSearch =
+          searchInput.value
+            .trim()
+            .toLowerCase();
+
+        applyProductFilters();
+
+      }
+    );
+
+
+    /* =====================================================
+       SORT
+       ===================================================== */
+
+    sortProducts.addEventListener(
+      "change",
+      () => {
+
+        sortMode =
+          sortProducts.value;
+
+        sortProductCards();
+
+        applyProductFilters();
+
+      }
+    );
+
+
+    /* =====================================================
+       PRICE FILTER
+       ===================================================== */
+
+    document
+      .getElementById(
+        "applyPrice"
+      )
+      .addEventListener(
+        "click",
+        () => {
+
+          const min =
+            Number(
+              minPriceInput.value
+            );
+
+          const max =
+            Number(
+              maxPriceInput.value
+            );
+
+          minPrice =
+            Number.isFinite(min) &&
+            min > 0
+              ? min
+              : 0;
+
+          maxPrice =
+            Number.isFinite(max) &&
+            max > 0
+              ? max
+              : Infinity;
+
+          applyProductFilters();
+
+        }
+      );
+
+
+    /* =====================================================
+       STOCK FILTER
+       ===================================================== */
+
+    inStockFilter.addEventListener(
+      "change",
+      () => {
+
+        onlyStock =
+          inStockFilter.checked;
+
+        applyProductFilters();
+
+      }
+    );
+
+
+    /* =====================================================
+       DISCOUNT FILTER
+       ===================================================== */
+
+    discountFilter.addEventListener(
+      "change",
+      () => {
+
+        onlyDiscount =
+          discountFilter.checked;
+
+        applyProductFilters();
+
+      }
+    );
+
+
+    /* =====================================================
+       CLEAR FILTERS
+       ===================================================== */
+
+    clearFilters.addEventListener(
+      "click",
+      () => {
+
+        pageCategory = "all";
+
+        pageSearch = "";
+
+        minPrice = 0;
+
+        maxPrice = Infinity;
+
+        onlyStock = false;
+
+        onlyDiscount = false;
+
+        sortMode = "default";
+
+        searchInput.value = "";
+
+        minPriceInput.value = "";
+
+        maxPriceInput.value = "";
+
+        inStockFilter.checked = false;
+
+        discountFilter.checked = false;
+
+        sortProducts.value = "default";
+
+        updateCategoryButtons();
+
+        applyProductFilters();
+
+      }
+    );
+
+
+    /* =====================================================
+       MOBILE FILTER
+       ===================================================== */
+
+    mobileFilterBtn.addEventListener(
+      "click",
+      () => {
+
+        filterSidebar.classList.toggle(
+          "mobile-open"
+        );
+
+        mobileFilterBtn.textContent =
+          filterSidebar.classList.contains(
+            "mobile-open"
+          )
+            ? "✕  Close Filters"
+            : "☰  Filter Products";
+
+      }
+    );
+
+
+    /* =====================================================
+       SORT PRODUCT CARDS
+       ===================================================== */
+
+    function sortProductCards() {
+
+      const cards =
+        [
+          ...productsGrid.querySelectorAll(
+            ".product-card"
+          )
+        ];
+
+      if (
+        sortMode === "default"
+      ) {
+
+        cards.sort(
+          (a, b) =>
+            Number(
+              a.dataset.originalOrder || 0
+            ) -
+            Number(
+              b.dataset.originalOrder || 0
+            )
+        );
+
+      }
+
+
+      if (
+        sortMode === "price-low"
+      ) {
+
+        cards.sort(
+          (a, b) =>
+            Number(a.dataset.price || 0) -
+            Number(b.dataset.price || 0)
+        );
+
+      }
+
+
+      if (
+        sortMode === "price-high"
+      ) {
+
+        cards.sort(
+          (a, b) =>
+            Number(b.dataset.price || 0) -
+            Number(a.dataset.price || 0)
+        );
+
+      }
+
+
+      if (
+        sortMode === "name-az"
+      ) {
+
+        cards.sort(
+          (a, b) => {
+
+            const nameA =
+              a.querySelector(
+                ".product-title"
+              )?.textContent
+                .trim()
+                .toLowerCase() || "";
+
+            const nameB =
+              b.querySelector(
+                ".product-title"
+              )?.textContent
+                .trim()
+                .toLowerCase() || "";
+
+            return nameA.localeCompare(
+              nameB
+            );
+
+          }
+        );
+
+      }
+
+
+      if (
+        sortMode === "name-za"
+      ) {
+
+        cards.sort(
+          (a, b) => {
+
+            const nameA =
+              a.querySelector(
+                ".product-title"
+              )?.textContent
+                .trim()
+                .toLowerCase() || "";
+
+            const nameB =
+              b.querySelector(
+                ".product-title"
+              )?.textContent
+                .trim()
+                .toLowerCase() || "";
+
+            return nameB.localeCompare(
+              nameA
+            );
+
+          }
+        );
+
+      }
+
+
+      cards.forEach(card => {
+
+        productsGrid.appendChild(
+          card
+        );
+
+      });
+
+    }
+
+
+    /* =====================================================
+       SAVE ORIGINAL ORDER
+       ===================================================== */
+
+    document
+      .querySelectorAll(
+        "#productsGrid .product-card"
+      )
+      .forEach(
+        (card, index) => {
+
+          card.dataset.originalOrder =
+            index;
+
+        }
+      );
+
+
+    /* =====================================================
+       APPLY ALL FILTERS
+       ===================================================== */
+
+    function applyProductFilters() {
+
+      const cards =
+        [
+          ...productsGrid.querySelectorAll(
+            ".product-card"
+          )
+        ];
+
+      let visible = 0;
+
+
+      cards.forEach(card => {
+
+        const category =
+          normalizeCategory(
+            card.dataset.category
+          );
+
+        const price =
+          Number(
+            card.dataset.price || 0
+          );
+
+        const stock =
+          card.dataset.stock ===
+          "true";
+
+        const badge =
+          card.querySelector(
+            ".product-badge"
+          );
+
+        const title =
+          card.querySelector(
+            ".product-title"
+          )?.textContent
+            .trim()
+            .toLowerCase() || "";
+
+        const brand =
+          card.querySelector(
+            ".product-brand"
+          )?.textContent
+            .trim()
+            .toLowerCase() || "";
+
+
+        const categoryMatch =
+          pageCategory === "all" ||
+          category === pageCategory;
+
+
+        const searchMatch =
+          !pageSearch ||
+          title.includes(pageSearch) ||
+          brand.includes(pageSearch) ||
+          category.includes(pageSearch);
+
+
+        const priceMatch =
+          price >= minPrice &&
+          price <= maxPrice;
+
+
+        const stockMatch =
+          !onlyStock ||
+          stock;
+
+
+        const discountMatch =
+          !onlyDiscount ||
+          !!badge;
+
+
+        const show =
+          categoryMatch &&
+          searchMatch &&
+          priceMatch &&
+          stockMatch &&
+          discountMatch;
+
+
+        card.style.display =
+          show
+            ? ""
+            : "none";
+
+
+        if (show) {
+          visible++;
+        }
+
+      });
+
+
+      resultCount.textContent =
+        visible;
+
+
+      showNoProducts(
+        visible === 0
+      );
+
+    }
+
+
+    /* =====================================================
+       NO PRODUCTS
+       ===================================================== */
+
+    function showNoProducts(
+      show
+    ) {
+
+      const existing =
+        productsGrid.querySelector(
+          ".no-products"
+        );
+
+      if (
+        show &&
+        !existing
+      ) {
+
+        const empty =
+          document.createElement(
+            "div"
+          );
+
+        empty.className =
+          "no-products";
+
+        empty.innerHTML = `
+
+          <div class="no-products-icon">
+            🔎
+          </div>
+
+          <h2>
+            No products found
+          </h2>
+
+          <p>
+            Try another search or change your filters.
+          </p>
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="emptyClearButton"
+          >
+            Clear Filters
+          </button>
+
+        `;
+
+        productsGrid.appendChild(
+          empty
+        );
+
+
+        document
+          .getElementById(
+            "emptyClearButton"
+          )
+          .addEventListener(
+            "click",
+            () => {
+
+              clearFilters.click();
+
+            }
+          );
+
+      }
+
+
+      if (
+        !show &&
+        existing
+      ) {
+
+        existing.remove();
+
+      }
+
+    }
+
+
+    /* =====================================================
+       INITIALIZE
+       ===================================================== */
+
+    updateCategoryButtons();
+
+    sortProductCards();
+
+    applyProductFilters();
+
+
+    /* =====================================================
+       CART DRAWER
+       Compatibility enhancement
+       ===================================================== */
+
+    const cartButton =
+      document.querySelector(
+        "[data-open-cart]"
+      );
+
+    const cartDrawer =
+      document.querySelector(
+        ".cart-drawer"
+      );
+
+    const cartOverlay =
+      document.querySelector(
+        ".cart-drawer-overlay"
+      );
+
+
+    if (
+      cartButton &&
+      cartDrawer
+    ) {
+
+      cartButton.addEventListener(
+        "click",
+        () => {
+
+          cartDrawer.classList.add(
+            "active"
+          );
+
+          cartOverlay?.classList.add(
+            "active"
+          );
+
+          document.body.classList.add(
+            "no-scroll"
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       UPDATE CART AFTER PAGE LOAD
+       ===================================================== */
+
+    if (
+      window.FamilyBazar &&
+      window.FamilyBazar.cart
+    ) {
+
+      const count =
+        window.FamilyBazar.cart.count();
+
+      document
+        .querySelectorAll(
+          ".cart-count"
+        )
+        .forEach(
+          element => {
+
+            element.textContent =
+              count;
+
+          }
+        );
+
+    }
+
+  </script>
+
+</body>
+</html>
