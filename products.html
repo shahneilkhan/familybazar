@@ -1,0 +1,2450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Family Bazar product details"
+  >
+
+  <title>Product Details | Family Bazar</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* =========================================================
+       FAMILY BAZAR
+       PRODUCT DETAILS PAGE
+       ========================================================= */
+
+    .product-details-page {
+      background: #f7f9fc;
+      min-height: 100vh;
+      padding: 32px 0 70px;
+    }
+
+    .details-container {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .breadcrumb a {
+      color: #1683e8;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .details-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 42px;
+      background: #fff;
+      border: 1px solid #e5eaf0;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(20, 50, 80, 0.05);
+    }
+
+    /* IMAGE AREA */
+
+    .product-gallery {
+      min-width: 0;
+    }
+
+    .main-image-box {
+      position: relative;
+      height: 470px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f7fafc;
+      border: 1px solid #edf1f5;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .main-product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 25px;
+      transition: transform 0.3s ease;
+    }
+
+    .main-image-box:hover .main-product-image {
+      transform: scale(1.03);
+    }
+
+    .sale-badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 2;
+      padding: 7px 13px;
+      border-radius: 30px;
+      background: #e53935;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .stock-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 2;
+      padding: 7px 13px;
+      border-radius: 30px;
+      background: #eaf8ef;
+      color: #16803c;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .stock-badge.out {
+      background: #fff0f0;
+      color: #d32f2f;
+    }
+
+    .thumbnail-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .thumbnail {
+      width: 76px;
+      height: 76px;
+      flex: 0 0 76px;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      background: #f7fafc;
+      overflow: hidden;
+      cursor: pointer;
+      padding: 4px;
+      transition: 0.2s ease;
+    }
+
+    .thumbnail:hover {
+      border-color: #b9d9f7;
+    }
+
+    .thumbnail.active {
+      border-color: #1683e8;
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* PRODUCT INFO */
+
+    .product-info {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      color: #1683e8;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 9px;
+    }
+
+    .product-title {
+      margin: 0;
+      color: #172033;
+      font-size: clamp(27px, 3vw, 38px);
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 19px;
+      letter-spacing: 1px;
+    }
+
+    .rating-number {
+      color: #172033;
+      font-weight: 800;
+    }
+
+    .review-count {
+      color: #697586;
+      font-size: 14px;
+    }
+
+    .price-box {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+      padding: 18px 0;
+      border-top: 1px solid #edf1f5;
+      border-bottom: 1px solid #edf1f5;
+    }
+
+    .current-price {
+      color: #16803c;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .old-price {
+      color: #9aa3af;
+      font-size: 18px;
+      text-decoration: line-through;
+    }
+
+    .discount {
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: #fff0f0;
+      color: #d32f2f;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .short-description {
+      margin: 20px 0 0;
+      color: #596579;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 11px;
+      margin-top: 20px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .info-item strong {
+      color: #172033;
+    }
+
+    /* QUANTITY */
+
+    .purchase-area {
+      margin-top: 25px;
+    }
+
+    .quantity-label {
+      display: block;
+      margin-bottom: 9px;
+      color: #172033;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .purchase-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      height: 48px;
+      border: 1px solid #dce3ea;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .quantity-btn {
+      width: 45px;
+      height: 100%;
+      border: 0;
+      background: #f5f7fa;
+      cursor: pointer;
+      font-size: 21px;
+      color: #172033;
+    }
+
+    .quantity-btn:hover {
+      background: #eaf3fb;
+    }
+
+    .quantity-value {
+      width: 48px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .add-cart-btn,
+    .buy-now-btn,
+    .wishlist-btn {
+      height: 48px;
+      border-radius: 10px;
+      padding: 0 22px;
+      border: 0;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .add-cart-btn {
+      background: #eaf4fd;
+      color: #0876d1;
+      border: 1px solid #cfe7fa;
+    }
+
+    .add-cart-btn:hover {
+      background: #dceefd;
+    }
+
+    .buy-now-btn {
+      background: #1683e8;
+      color: #fff;
+    }
+
+    .buy-now-btn:hover {
+      background: #0d72cf;
+      transform: translateY(-1px);
+    }
+
+    .wishlist-btn {
+      width: 48px;
+      padding: 0;
+      background: #fff;
+      color: #d32f2f;
+      border: 1px solid #dce3ea;
+      font-size: 20px;
+    }
+
+    .wishlist-btn.active {
+      background: #fff0f0;
+      border-color: #f1b8b8;
+    }
+
+    /* DELIVERY */
+
+    .delivery-box {
+      display: grid;
+      gap: 12px;
+      margin-top: 25px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #f8fbfe;
+      border: 1px solid #e5eff8;
+    }
+
+    .delivery-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+    }
+
+    .delivery-icon {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e4f2fd;
+      color: #1683e8;
+    }
+
+    .delivery-item strong {
+      display: block;
+      color: #172033;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .delivery-item span {
+      color: #697586;
+      font-size: 13px;
+    }
+
+    /* DESCRIPTION */
+
+    .description-section {
+      margin-top: 24px;
+      background: #fff;
+      border: 1px solid #e5eaf0;
+      border-radius: 18px;
+      padding: 28px;
+    }
+
+    .section-heading {
+      margin: 0 0 18px;
+      color: #172033;
+      font-size: 23px;
+    }
+
+    .description-text {
+      color: #596579;
+      font-size: 15px;
+      line-height: 1.85;
+      margin: 0;
+    }
+
+    .details-table {
+      width: 100%;
+      margin-top: 24px;
+      border-collapse: collapse;
+    }
+
+    .details-table tr {
+      border-bottom: 1px solid #edf1f5;
+    }
+
+    .details-table tr:last-child {
+      border-bottom: 0;
+    }
+
+    .details-table td {
+      padding: 13px 8px;
+      font-size: 14px;
+    }
+
+    .details-table td:first-child {
+      width: 35%;
+      color: #697586;
+      font-weight: 700;
+    }
+
+    .details-table td:last-child {
+      color: #172033;
+      font-weight: 600;
+    }
+
+    /* RELATED */
+
+    .related-section {
+      margin-top: 28px;
+    }
+
+    .related-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 18px;
+    }
+
+    .related-header h2 {
+      margin: 0;
+      color: #172033;
+      font-size: 25px;
+    }
+
+    .related-header a {
+      color: #1683e8;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .related-card {
+      background: #fff;
+      border: 1px solid #e5eaf0;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: 0.2s ease;
+    }
+
+    .related-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(20, 50, 80, 0.08);
+    }
+
+    .related-image {
+      height: 190px;
+      background: #f7fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .related-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 15px;
+    }
+
+    .related-content {
+      padding: 15px;
+    }
+
+    .related-title {
+      margin: 0;
+      min-height: 42px;
+      color: #172033;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .related-price {
+      margin-top: 9px;
+      color: #16803c;
+      font-weight: 900;
+      font-size: 17px;
+    }
+
+    /* LOADING / ERROR */
+
+    .product-error {
+      display: none;
+      text-align: center;
+      background: #fff;
+      border: 1px solid #e5eaf0;
+      border-radius: 18px;
+      padding: 70px 20px;
+    }
+
+    .product-error.show {
+      display: block;
+    }
+
+    .product-error h2 {
+      margin: 0 0 10px;
+      color: #172033;
+    }
+
+    .product-error p {
+      color: #697586;
+      margin-bottom: 20px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 20px;
+      border-radius: 9px;
+      background: #1683e8;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1000px) {
+      .details-card {
+        grid-template-columns: 1fr;
+      }
+
+      .related-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .product-details-page {
+        padding-top: 20px;
+      }
+
+      .details-container {
+        width: min(100% - 20px, 1200px);
+      }
+
+      .details-card,
+      .description-section {
+        padding: 18px;
+        border-radius: 14px;
+      }
+
+      .main-image-box {
+        height: 350px;
+      }
+
+      .purchase-row {
+        display: grid;
+        grid-template-columns: auto 1fr 1fr auto;
+      }
+
+      .add-cart-btn,
+      .buy-now-btn {
+        padding: 0 12px;
+      }
+
+      .related-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-image-box {
+        height: 290px;
+      }
+
+      .product-title {
+        font-size: 26px;
+      }
+
+      .current-price {
+        font-size: 29px;
+      }
+
+      .purchase-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .quantity-control {
+        grid-column: 1 / -1;
+        justify-self: start;
+      }
+
+      .add-cart-btn,
+      .buy-now-btn {
+        width: 100%;
+      }
+
+      .wishlist-btn {
+        width: 100%;
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .related-image {
+        height: 145px;
+      }
+
+      .related-content {
+        padding: 11px;
+      }
+
+      .details-table td:first-child {
+        width: 40%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========================================================
+       HEADER
+       ======================================================== -->
+
+  <header class="site-header">
+
+    <div class="header-main">
+      <div class="container header-container">
+
+        <a href="index.html" class="logo" aria-label="Family Bazar Home">
+          <img
+            class="family-logo"
+            src="https://raw.githubusercontent.com/shahneilkhan/familybazar.github.io/main/Frame%20399.jpg"
+            alt="Family Bazar"
+          >
+        </a>
+
+        <form
+          class="search-form"
+          id="globalSearchForm"
+          role="search"
+        >
+          <input
+            type="search"
+            id="globalSearch"
+            placeholder="Search products..."
+            autocomplete="off"
+          >
+
+          <button type="submit" aria-label="Search">
+            🔍
+          </button>
+        </form>
+
+        <div class="header-actions">
+
+          <a href="login.html" class="header-action">
+            <span class="header-action-icon">👤</span>
+            <span class="header-action-text">
+              <small>Hello,</small>
+              Account
+            </span>
+          </a>
+
+          <a href="wishlist.html" class="header-action">
+            <span class="header-action-icon">♡</span>
+            <span class="header-action-text">
+              <small>My</small>
+              Wishlist
+            </span>
+          </a>
+
+          <button
+            type="button"
+            class="header-action cart-action"
+            id="cartButton"
+          >
+            <span class="header-action-icon">
+              🛒
+              <b id="cartCount">0</b>
+            </span>
+
+            <span class="header-action-text">
+              <small>My</small>
+              Cart
+            </span>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container nav-container">
+
+        <button
+          type="button"
+          class="mobile-menu-btn"
+          id="mobileMenuBtn"
+        >
+          ☰
+        </button>
+
+        <a href="index.html">Home</a>
+        <a href="products.html">All Products</a>
+        <a href="products.html?category=Groceries">Groceries</a>
+        <a href="products.html?category=Rice%20%26%20Grains">Rice &amp; Grains</a>
+        <a href="products.html?category=Oil%20%26%20Ghee">Oil &amp; Ghee</a>
+        <a href="products.html?category=Spices">Spices</a>
+        <a href="products.html?category=Beverages">Beverages</a>
+        <a href="products.html?category=Snacks">Snacks</a>
+        <a href="products.html?category=Personal%20Care">Personal Care</a>
+
+      </div>
+    </nav>
+
+  </header>
+
+
+  <!-- ========================================================
+       PRODUCT DETAILS
+       ======================================================== -->
+
+  <main class="product-details-page">
+
+    <div class="details-container">
+
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+
+        <a href="products.html">Products</a>
+        <span>›</span>
+
+        <span id="breadcrumbProduct">
+          Product
+        </span>
+      </div>
+
+
+      <!-- ERROR -->
+      <div
+        class="product-error"
+        id="productError"
+      >
+        <h2>Product Not Found</h2>
+
+        <p>
+          The product you are looking for could not be found.
+        </p>
+
+        <a
+          href="products.html"
+          class="back-btn"
+        >
+          Browse Products
+        </a>
+      </div>
+
+
+      <!-- MAIN PRODUCT -->
+
+      <section
+        class="details-card"
+        id="productDetails"
+      >
+
+        <!-- GALLERY -->
+
+        <div class="product-gallery">
+
+          <div class="main-image-box">
+
+            <span
+              class="sale-badge"
+              id="saleBadge"
+            >
+              SALE
+            </span>
+
+            <span
+              class="stock-badge"
+              id="stockBadge"
+            >
+              In Stock
+            </span>
+
+            <img
+              id="mainProductImage"
+              class="main-product-image"
+              src=""
+              alt="Product"
+            >
+
+          </div>
+
+          <div
+            class="thumbnail-row"
+            id="thumbnailRow"
+          ></div>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="product-info">
+
+          <div
+            class="brand-name"
+            id="productBrand"
+          >
+            Family Bazar
+          </div>
+
+          <h1
+            class="product-title"
+            id="productTitle"
+          >
+            Product
+          </h1>
+
+
+          <div class="rating-row">
+
+            <span
+              class="stars"
+              id="productStars"
+            >
+              ★★★★★
+            </span>
+
+            <span
+              class="rating-number"
+              id="ratingNumber"
+            >
+              4.8
+            </span>
+
+            <span
+              class="review-count"
+              id="reviewCount"
+            >
+              120 Reviews
+            </span>
+
+          </div>
+
+
+          <div class="price-box">
+
+            <span
+              class="current-price"
+              id="currentPrice"
+            >
+              ৳0
+            </span>
+
+            <span
+              class="old-price"
+              id="oldPrice"
+            ></span>
+
+            <span
+              class="discount"
+              id="discount"
+            ></span>
+
+          </div>
+
+
+          <p
+            class="short-description"
+            id="shortDescription"
+          ></p>
+
+
+          <div class="info-list">
+
+            <div class="info-item">
+              <span>📦</span>
+              <span>
+                Availability:
+                <strong id="availabilityText">
+                  In Stock
+                </strong>
+              </span>
+            </div>
+
+            <div class="info-item">
+              <span>🚚</span>
+              <span>
+                Delivery:
+                <strong>Available in selected areas</strong>
+              </span>
+            </div>
+
+            <div class="info-item">
+              <span>🔒</span>
+              <span>
+                Secure:
+                <strong>Safe &amp; secure checkout</strong>
+              </span>
+            </div>
+
+          </div>
+
+
+          <!-- PURCHASE -->
+
+          <div class="purchase-area">
+
+            <span class="quantity-label">
+              Quantity
+            </span>
+
+            <div class="purchase-row">
+
+              <div class="quantity-control">
+
+                <button
+                  type="button"
+                  class="quantity-btn"
+                  id="minusBtn"
+                  aria-label="Decrease quantity"
+                >
+                  −
+                </button>
+
+                <span
+                  class="quantity-value"
+                  id="quantityValue"
+                >
+                  1
+                </span>
+
+                <button
+                  type="button"
+                  class="quantity-btn"
+                  id="plusBtn"
+                  aria-label="Increase quantity"
+                >
+                  +
+                </button>
+
+              </div>
+
+              <button
+                type="button"
+                class="add-cart-btn"
+                id="addCartBtn"
+              >
+                🛒 Add to Cart
+              </button>
+
+              <button
+                type="button"
+                class="buy-now-btn"
+                id="buyNowBtn"
+              >
+                Buy Now
+              </button>
+
+              <button
+                type="button"
+                class="wishlist-btn"
+                id="wishlistBtn"
+                aria-label="Add to wishlist"
+              >
+                ♡
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- DELIVERY -->
+
+          <div class="delivery-box">
+
+            <div class="delivery-item">
+
+              <div class="delivery-icon">
+                🚚
+              </div>
+
+              <div>
+                <strong>Fast Delivery</strong>
+                <span>
+                  Delivery service available in your area.
+                </span>
+              </div>
+
+            </div>
+
+            <div class="delivery-item">
+
+              <div class="delivery-icon">
+                ↩️
+              </div>
+
+              <div>
+                <strong>Easy Return</strong>
+                <span>
+                  Product issue? Contact Family Bazar support.
+                </span>
+              </div>
+
+            </div>
+
+            <div class="delivery-item">
+
+              <div class="delivery-icon">
+                ✓
+              </div>
+
+              <div>
+                <strong>Quality Checked</strong>
+                <span>
+                  We aim to provide quality daily essentials.
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ====================================================
+           DESCRIPTION
+           ==================================================== -->
+
+      <section class="description-section">
+
+        <h2 class="section-heading">
+          Product Description
+        </h2>
+
+        <p
+          class="description-text"
+          id="productDescription"
+        ></p>
+
+
+        <table class="details-table">
+
+          <tbody>
+
+            <tr>
+              <td>Product Name</td>
+              <td id="tableName">—</td>
+            </tr>
+
+            <tr>
+              <td>Brand</td>
+              <td id="tableBrand">—</td>
+            </tr>
+
+            <tr>
+              <td>Category</td>
+              <td id="tableCategory">—</td>
+            </tr>
+
+            <tr>
+              <td>Availability</td>
+              <td id="tableStock">—</td>
+            </tr>
+
+            <tr>
+              <td>Product ID</td>
+              <td id="tableId">—</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </section>
+
+
+      <!-- ====================================================
+           RELATED PRODUCTS
+           ==================================================== -->
+
+      <section class="related-section">
+
+        <div class="related-header">
+
+          <h2>
+            You May Also Like
+          </h2>
+
+          <a href="products.html">
+            View All →
+          </a>
+
+        </div>
+
+        <div
+          class="related-grid"
+          id="relatedGrid"
+        ></div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- ========================================================
+       CART DRAWER
+       ======================================================== -->
+
+  <div
+    class="cart-drawer-overlay"
+    id="cartOverlay"
+  ></div>
+
+  <aside
+    class="cart-drawer"
+    id="cartDrawer"
+    aria-hidden="true"
+  >
+
+    <div class="cart-drawer-header">
+
+      <h2>Your Cart</h2>
+
+      <button
+        type="button"
+        id="closeCart"
+        aria-label="Close cart"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div
+      class="cart-drawer-body"
+      id="cartDrawerBody"
+    ></div>
+
+    <div class="cart-drawer-footer">
+
+      <div class="cart-total-row">
+
+        <span>Subtotal</span>
+
+        <strong id="cartSubtotal">
+          ৳0
+        </strong>
+
+      </div>
+
+      <a
+        href="cart.html"
+        class="checkout-btn"
+      >
+        View Cart
+      </a>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ========================================================
+       TOAST
+       ======================================================== -->
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <!-- ========================================================
+       MOBILE BOTTOM NAV
+       ======================================================== -->
+
+  <nav class="mobile-bottom-nav">
+
+    <a href="index.html">
+      <span>⌂</span>
+      <small>Home</small>
+    </a>
+
+    <a href="products.html">
+      <span>▦</span>
+      <small>Products</small>
+    </a>
+
+    <button
+      type="button"
+      id="mobileCartButton"
+    >
+      <span>🛒</span>
+      <small>Cart</small>
+    </button>
+
+    <a href="wishlist.html">
+      <span>♡</span>
+      <small>Wishlist</small>
+    </a>
+
+    <a href="login.html">
+      <span>👤</span>
+      <small>Account</small>
+    </a>
+
+  </nav>
+
+
+  <!-- ========================================================
+       SCRIPT
+       ======================================================== -->
+
+  <script src="script.js" defer></script>
+
+
+  <script>
+    /* =========================================================
+       FAMILY BAZAR
+       PRODUCT DETAILS LOGIC
+       ========================================================= */
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const products = {
+
+        fb001: {
+          id: "fb001",
+          name: "Premium Miniket Rice",
+          brand: "Family Bazar",
+          category: "Rice & Grains",
+          price: 850,
+          oldPrice: 920,
+          rating: 4.8,
+          reviews: 126,
+          stock: true,
+          image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=900&q=85",
+          description:
+            "Premium quality Miniket Rice selected for everyday family meals. Clean, carefully processed and suitable for regular cooking.",
+          unit: "5 KG"
+        },
+
+        fb002: {
+          id: "fb002",
+          name: "Premium Atta 2 KG",
+          brand: "Family Bazar",
+          category: "Rice & Grains",
+          price: 145,
+          oldPrice: 165,
+          rating: 4.7,
+          reviews: 84,
+          stock: true,
+          image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85",
+          description:
+            "Fresh and quality atta suitable for roti, paratha and everyday family meals.",
+          unit: "2 KG"
+        },
+
+        fb003: {
+          id: "fb003",
+          name: "Fresh Vegetable Basket",
+          brand: "Family Bazar Fresh",
+          category: "Groceries",
+          price: 399,
+          oldPrice: 450,
+          rating: 4.9,
+          reviews: 97,
+          stock: true,
+          image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=85",
+          description:
+            "A convenient selection of fresh vegetables for your family's daily cooking needs.",
+          unit: "1 Basket"
+        },
+
+        fb004: {
+          id: "fb004",
+          name: "Premium Soybean Oil",
+          brand: "Family Bazar",
+          category: "Oil & Ghee",
+          price: 185,
+          oldPrice: 205,
+          rating: 4.6,
+          reviews: 113,
+          stock: true,
+          image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=85",
+          description:
+            "Quality soybean cooking oil for everyday family meals and kitchen use.",
+          unit: "1 Liter"
+        },
+
+        fb005: {
+          id: "fb005",
+          name: "Fresh Full Cream Milk",
+          brand: "Family Bazar Fresh",
+          category: "Dairy",
+          price: 95,
+          oldPrice: 110,
+          rating: 4.8,
+          reviews: 76,
+          stock: true,
+          image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=900&q=85",
+          description:
+            "Fresh full cream milk for breakfast, tea, coffee and everyday family nutrition.",
+          unit: "1 Liter"
+        },
+
+        fb006: {
+          id: "fb006",
+          name: "Premium Mixed Spices",
+          brand: "Family Bazar",
+          category: "Spices",
+          price: 120,
+          oldPrice: 145,
+          rating: 4.7,
+          reviews: 63,
+          stock: true,
+          image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=85",
+          description:
+            "A convenient blend of selected spices designed to bring rich flavour to everyday cooking.",
+          unit: "200 GM"
+        },
+
+        fb007: {
+          id: "fb007",
+          name: "Premium Pasta",
+          brand: "Family Bazar",
+          category: "Groceries",
+          price: 150,
+          oldPrice: 175,
+          rating: 4.5,
+          reviews: 48,
+          stock: true,
+          image: "https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?auto=format&fit=crop&w=900&q=85",
+          description:
+            "Easy-to-cook pasta for quick family meals, snacks and special recipes.",
+          unit: "500 GM"
+        },
+
+        fb008: {
+          id: "fb008",
+          name: "Family Cookies Pack",
+          brand: "Family Bazar",
+          category: "Snacks",
+          price: 180,
+          oldPrice: 210,
+          rating: 4.6,
+          reviews: 59,
+          stock: true,
+          image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=85",
+          description:
+            "Crunchy and delicious cookies suitable for tea time, snacks and family gatherings.",
+          unit: "500 GM"
+        },
+
+        fb009: {
+          id: "fb009",
+          name: "Kitchen Essentials Pack",
+          brand: "Family Bazar",
+          category: "Groceries",
+          price: 499,
+          oldPrice: 599,
+          rating: 4.8,
+          reviews: 72,
+          stock: true,
+          image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=85",
+          description:
+            "A useful collection of everyday kitchen essentials for convenient family shopping.",
+          unit: "1 Pack"
+        },
+
+        fb010: {
+          id: "fb010",
+          name: "Pure Natural Honey",
+          brand: "Family Bazar Fresh",
+          category: "Beverages",
+          price: 350,
+          oldPrice: 400,
+          rating: 4.9,
+          reviews: 91,
+          stock: true,
+          image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=900&q=85",
+          description:
+            "Pure natural honey selected for everyday use with tea, breakfast and family recipes.",
+          unit: "500 GM"
+        }
+
+      };
+
+
+      /* =======================================================
+         GET PRODUCT ID
+         ======================================================= */
+
+      const params = new URLSearchParams(window.location.search);
+
+      const productId =
+        params.get("id") ||
+        params.get("product") ||
+        "fb001";
+
+      const product = products[productId];
+
+
+      /* =======================================================
+         ELEMENTS
+         ======================================================= */
+
+      const details =
+        document.getElementById("productDetails");
+
+      const errorBox =
+        document.getElementById("productError");
+
+      const mainImage =
+        document.getElementById("mainProductImage");
+
+      const thumbnailRow =
+        document.getElementById("thumbnailRow");
+
+      const title =
+        document.getElementById("productTitle");
+
+      const brand =
+        document.getElementById("productBrand");
+
+      const currentPrice =
+        document.getElementById("currentPrice");
+
+      const oldPrice =
+        document.getElementById("oldPrice");
+
+      const discount =
+        document.getElementById("discount");
+
+      const description =
+        document.getElementById("productDescription");
+
+      const shortDescription =
+        document.getElementById("shortDescription");
+
+      const saleBadge =
+        document.getElementById("saleBadge");
+
+      const stockBadge =
+        document.getElementById("stockBadge");
+
+      const availability =
+        document.getElementById("availabilityText");
+
+      const breadcrumbProduct =
+        document.getElementById("breadcrumbProduct");
+
+      const quantityValue =
+        document.getElementById("quantityValue");
+
+      const wishlistBtn =
+        document.getElementById("wishlistBtn");
+
+
+      /* =======================================================
+         PRODUCT NOT FOUND
+         ======================================================= */
+
+      if (!product) {
+
+        details.style.display = "none";
+
+        errorBox.classList.add("show");
+
+        return;
+      }
+
+
+      /* =======================================================
+         BASIC PRODUCT DATA
+         ======================================================= */
+
+      document.title =
+        product.name + " | Family Bazar";
+
+      title.textContent =
+        product.name;
+
+      brand.textContent =
+        product.brand;
+
+      breadcrumbProduct.textContent =
+        product.name;
+
+      currentPrice.textContent =
+        "৳" + product.price.toLocaleString("en-BD");
+
+      if (product.oldPrice) {
+
+        oldPrice.textContent =
+          "৳" + product.oldPrice.toLocaleString("en-BD");
+
+        const save =
+          Math.round(
+            ((product.oldPrice - product.price) /
+              product.oldPrice) * 100
+          );
+
+        discount.textContent =
+          save + "% OFF";
+
+      } else {
+
+        oldPrice.textContent = "";
+        discount.textContent = "";
+      }
+
+
+      shortDescription.textContent =
+        product.description;
+
+      description.textContent =
+        product.description;
+
+
+      document.getElementById("ratingNumber").textContent =
+        product.rating;
+
+      document.getElementById("reviewCount").textContent =
+        product.reviews + " Reviews";
+
+
+      /* =======================================================
+         IMAGE
+         ======================================================= */
+
+      mainImage.src =
+        product.image;
+
+      mainImage.alt =
+        product.name;
+
+
+      mainImage.onerror = function () {
+
+        this.src =
+          "https://via.placeholder.com/700x700?text=Family+Bazar";
+      };
+
+
+      /* =======================================================
+         THUMBNAILS
+         ======================================================= */
+
+      thumbnailRow.innerHTML = "";
+
+      const imageList = [
+        product.image,
+        product.image,
+        product.image
+      ];
+
+      imageList.forEach(function (image, index) {
+
+        const button =
+          document.createElement("button");
+
+        button.type = "button";
+
+        button.className =
+          "thumbnail" +
+          (index === 0 ? " active" : "");
+
+        button.innerHTML =
+          `
+            <img
+              src="${image}"
+              alt="${product.name}"
+            >
+          `;
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            mainImage.src = image;
+
+            document
+              .querySelectorAll(".thumbnail")
+              .forEach(function (item) {
+                item.classList.remove("active");
+              });
+
+            button.classList.add("active");
+          }
+        );
+
+        thumbnailRow.appendChild(button);
+
+      });
+
+
+      /* =======================================================
+         STOCK
+         ======================================================= */
+
+      if (product.stock) {
+
+        stockBadge.textContent =
+          "In Stock";
+
+        stockBadge.classList.remove("out");
+
+        availability.textContent =
+          "In Stock";
+
+      } else {
+
+        stockBadge.textContent =
+          "Out of Stock";
+
+        stockBadge.classList.add("out");
+
+        availability.textContent =
+          "Out of Stock";
+      }
+
+
+      if (!product.oldPrice) {
+        saleBadge.style.display = "none";
+      }
+
+
+      /* =======================================================
+         TABLE
+         ======================================================= */
+
+      document.getElementById("tableName").textContent =
+        product.name;
+
+      document.getElementById("tableBrand").textContent =
+        product.brand;
+
+      document.getElementById("tableCategory").textContent =
+        product.category;
+
+      document.getElementById("tableStock").textContent =
+        product.stock ? "In Stock" : "Out of Stock";
+
+      document.getElementById("tableId").textContent =
+        product.id;
+
+
+      /* =======================================================
+         QUANTITY
+         ======================================================= */
+
+      let quantity = 1;
+
+      document
+        .getElementById("minusBtn")
+        .addEventListener("click", function () {
+
+          if (quantity > 1) {
+            quantity--;
+            quantityValue.textContent = quantity;
+          }
+
+        });
+
+
+      document
+        .getElementById("plusBtn")
+        .addEventListener("click", function () {
+
+          if (quantity < 20) {
+            quantity++;
+            quantityValue.textContent = quantity;
+          }
+
+        });
+
+
+      /* =======================================================
+         CART
+         ======================================================= */
+
+      function getCart() {
+
+        try {
+
+          return JSON.parse(
+            localStorage.getItem("familyBazarCart")
+          ) || [];
+
+        } catch (error) {
+
+          return [];
+        }
+      }
+
+
+      function saveCart(cart) {
+
+        localStorage.setItem(
+          "familyBazarCart",
+          JSON.stringify(cart)
+        );
+
+      }
+
+
+      function addToCart(productItem, qty) {
+
+        const cart =
+          getCart();
+
+        const existing =
+          cart.find(function (item) {
+            return item.id === productItem.id;
+          });
+
+
+        if (existing) {
+
+          existing.quantity =
+            Math.min(
+              20,
+              Number(existing.quantity || 0) + qty
+            );
+
+        } else {
+
+          cart.push({
+
+            id: productItem.id,
+            name: productItem.name,
+            brand: productItem.brand,
+            category: productItem.category,
+            price: productItem.price,
+            oldPrice: productItem.oldPrice,
+            image: productItem.image,
+            quantity: qty
+
+          });
+
+        }
+
+
+        saveCart(cart);
+
+        updateCartCount();
+
+        showToast(
+          productItem.name +
+          " added to cart"
+        );
+
+      }
+
+
+      document
+        .getElementById("addCartBtn")
+        .addEventListener("click", function () {
+
+          if (!product.stock) {
+
+            showToast(
+              "This product is currently unavailable."
+            );
+
+            return;
+          }
+
+          addToCart(
+            product,
+            quantity
+          );
+
+        });
+
+
+      /* =======================================================
+         BUY NOW
+         ======================================================= */
+
+      document
+        .getElementById("buyNowBtn")
+        .addEventListener("click", function () {
+
+          if (!product.stock) {
+
+            showToast(
+              "This product is currently unavailable."
+            );
+
+            return;
+          }
+
+          addToCart(
+            product,
+            quantity
+          );
+
+          setTimeout(function () {
+
+            window.location.href =
+              "cart.html";
+
+          }, 250);
+
+        });
+
+
+      /* =======================================================
+         WISHLIST
+         ======================================================= */
+
+      function getWishlist() {
+
+        try {
+
+          return JSON.parse(
+            localStorage.getItem(
+              "familyBazarWishlist"
+            )
+          ) || [];
+
+        } catch (error) {
+
+          return [];
+        }
+      }
+
+
+      function saveWishlist(items) {
+
+        localStorage.setItem(
+          "familyBazarWishlist",
+          JSON.stringify(items)
+        );
+
+      }
+
+
+      function updateWishlistButton() {
+
+        const wishlist =
+          getWishlist();
+
+        const exists =
+          wishlist.some(function (item) {
+
+            return (
+              typeof item === "string"
+                ? item === product.id
+                : item.id === product.id
+            );
+
+          });
+
+
+        wishlistBtn.classList.toggle(
+          "active",
+          exists
+        );
+
+        wishlistBtn.textContent =
+          exists ? "♥" : "♡";
+
+      }
+
+
+      wishlistBtn.addEventListener(
+        "click",
+        function () {
+
+          let wishlist =
+            getWishlist();
+
+          const index =
+            wishlist.findIndex(function (item) {
+
+              return (
+                typeof item === "string"
+                  ? item === product.id
+                  : item.id === product.id
+              );
+
+            });
+
+
+          if (index >= 0) {
+
+            wishlist.splice(index, 1);
+
+            showToast(
+              "Removed from wishlist"
+            );
+
+          } else {
+
+            wishlist.push({
+
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              image: product.image
+
+            });
+
+            showToast(
+              "Added to wishlist"
+            );
+
+          }
+
+
+          saveWishlist(wishlist);
+
+          updateWishlistButton();
+
+        }
+      );
+
+
+      updateWishlistButton();
+
+
+      /* =======================================================
+         RELATED PRODUCTS
+         ======================================================= */
+
+      const relatedGrid =
+        document.getElementById("relatedGrid");
+
+      const related =
+        Object.values(products)
+          .filter(function (item) {
+
+            return (
+              item.id !== product.id &&
+              item.category === product.category
+            );
+
+          })
+          .slice(0, 4);
+
+
+      const fallbackRelated =
+        Object.values(products)
+          .filter(function (item) {
+
+            return item.id !== product.id;
+
+          })
+          .slice(0, 4);
+
+
+      const relatedProducts =
+        related.length >= 2
+          ? related
+          : fallbackRelated;
+
+
+      relatedGrid.innerHTML = "";
+
+
+      relatedProducts.forEach(function (item) {
+
+        const card =
+          document.createElement("article");
+
+        card.className =
+          "related-card";
+
+        card.innerHTML =
+          `
+            <a
+              href="product-details.html?id=${item.id}"
+              style="text-decoration:none;color:inherit;"
+            >
+
+              <div class="related-image">
+
+                <img
+                  src="${item.image}"
+                  alt="${item.name}"
+                  loading="lazy"
+                >
+
+              </div>
+
+              <div class="related-content">
+
+                <h3 class="related-title">
+                  ${item.name}
+                </h3>
+
+                <div class="related-price">
+                  ৳${item.price.toLocaleString("en-BD")}
+                </div>
+
+              </div>
+
+            </a>
+          `;
+
+        relatedGrid.appendChild(card);
+
+      });
+
+
+      /* =======================================================
+         CART COUNT
+         ======================================================= */
+
+      function updateCartCount() {
+
+        const cart =
+          getCart();
+
+        const count =
+          cart.reduce(function (total, item) {
+
+            return total +
+              Number(item.quantity || 0);
+
+          }, 0);
+
+
+        const countElements =
+          document.querySelectorAll(
+            "#cartCount"
+          );
+
+        countElements.forEach(function (element) {
+
+          element.textContent =
+            count;
+
+        });
+
+      }
+
+
+      updateCartCount();
+
+
+      /* =======================================================
+         TOAST
+         ======================================================= */
+
+      function showToast(message) {
+
+        const toast =
+          document.getElementById("toast");
+
+        if (!toast) {
+          return;
+        }
+
+        toast.textContent =
+          message;
+
+        toast.classList.add("show");
+
+        clearTimeout(
+          window.familyBazarToastTimer
+        );
+
+        window.familyBazarToastTimer =
+          setTimeout(function () {
+
+            toast.classList.remove("show");
+
+          }, 2200);
+
+      }
+
+
+      /* =======================================================
+         SEARCH
+         ======================================================= */
+
+      const searchForm =
+        document.getElementById(
+          "globalSearchForm"
+        );
+
+      const searchInput =
+        document.getElementById(
+          "globalSearch"
+        );
+
+
+      searchForm.addEventListener(
+        "submit",
+        function (event) {
+
+          event.preventDefault();
+
+          const query =
+            searchInput.value.trim();
+
+          if (!query) {
+            return;
+          }
+
+          window.location.href =
+            "products.html?search=" +
+            encodeURIComponent(query);
+
+        }
+      );
+
+
+      /* =======================================================
+         CART DRAWER
+         ======================================================= */
+
+      const cartButton =
+        document.getElementById(
+          "cartButton"
+        );
+
+      const mobileCartButton =
+        document.getElementById(
+          "mobileCartButton"
+        );
+
+      const cartDrawer =
+        document.getElementById(
+          "cartDrawer"
+        );
+
+      const cartOverlay =
+        document.getElementById(
+          "cartOverlay"
+        );
+
+      const closeCart =
+        document.getElementById(
+          "closeCart"
+        );
+
+
+      function renderCartDrawer() {
+
+        const body =
+          document.getElementById(
+            "cartDrawerBody"
+          );
+
+        const subtotalElement =
+          document.getElementById(
+            "cartSubtotal"
+          );
+
+        const cart =
+          getCart();
+
+
+        if (!cart.length) {
+
+          body.innerHTML =
+            `
+              <div
+                style="
+                  text-align:center;
+                  padding:50px 15px;
+                  color:#697586;
+                "
+              >
+                <div
+                  style="
+                    font-size:45px;
+                    margin-bottom:12px;
+                  "
+                >
+                  🛒
+                </div>
+
+                <strong
+                  style="
+                    display:block;
+                    color:#172033;
+                    margin-bottom:7px;
+                  "
+                >
+                  Your cart is empty
+                </strong>
+
+                <span>
+                  Add products to your cart.
+                </span>
+              </div>
+            `;
+
+          subtotalElement.textContent =
+            "৳0";
+
+          return;
+        }
+
+
+        let subtotal = 0;
+
+        body.innerHTML = "";
+
+
+        cart.forEach(function (item) {
+
+          const quantity =
+            Number(item.quantity || 1);
+
+          subtotal +=
+            Number(item.price || 0) *
+            quantity;
+
+
+          const row =
+            document.createElement("div");
+
+          row.style.cssText =
+            `
+              display:flex;
+              gap:12px;
+              padding:12px 0;
+              border-bottom:1px solid #edf1f5;
+            `;
+
+
+          row.innerHTML =
+            `
+              <img
+                src="${item.image}"
+                alt="${item.name}"
+                style="
+                  width:65px;
+                  height:65px;
+                  object-fit:contain;
+                  border-radius:9px;
+                  background:#f7fafc;
+                "
+              >
+
+              <div style="flex:1;">
+
+                <strong
+                  style="
+                    display:block;
+                    color:#172033;
+                    font-size:13px;
+                    line-height:1.4;
+                  "
+                >
+                  ${item.name}
+                </strong>
+
+                <div
+                  style="
+                    color:#16803c;
+                    font-weight:800;
+                    margin-top:5px;
+                  "
+                >
+                  ৳${Number(item.price).toLocaleString("en-BD")}
+                  × ${quantity}
+                </div>
+
+              </div>
+            `;
+
+          body.appendChild(row);
+
+        });
+
+
+        subtotalElement.textContent =
+          "৳" +
+          subtotal.toLocaleString("en-BD");
+
+      }
+
+
+      function openCart() {
+
+        renderCartDrawer();
+
+        cartDrawer.classList.add("open");
+
+        cartOverlay.classList.add("show");
+
+        cartDrawer.setAttribute(
+          "aria-hidden",
+          "false"
+        );
+
+      }
+
+
+      function closeCartDrawer() {
+
+        cartDrawer.classList.remove("open");
+
+        cartOverlay.classList.remove("show");
+
+        cartDrawer.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+      }
+
+
+      if (cartButton) {
+
+        cartButton.addEventListener(
+          "click",
+          openCart
+        );
+
+      }
+
+
+      if (mobileCartButton) {
+
+        mobileCartButton.addEventListener(
+          "click",
+          openCart
+        );
+
+      }
+
+
+      closeCart.addEventListener(
+        "click",
+        closeCartDrawer
+      );
+
+
+      cartOverlay.addEventListener(
+        "click",
+        closeCartDrawer
+      );
+
+
+      /* =======================================================
+         MOBILE MENU
+         ======================================================= */
+
+      const mobileMenuBtn =
+        document.getElementById(
+          "mobileMenuBtn"
+        );
+
+      const navContainer =
+        document.querySelector(
+          ".nav-container"
+        );
+
+
+      if (mobileMenuBtn && navContainer) {
+
+        mobileMenuBtn.addEventListener(
+          "click",
+          function () {
+
+            navContainer.classList.toggle(
+              "mobile-open"
+            );
+
+          }
+        );
+
+      }
+
+    });
+  </script>
+
+</body>
+</html>
